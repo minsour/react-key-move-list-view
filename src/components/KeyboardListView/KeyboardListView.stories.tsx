@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import KeyboardListView from '../src/components/KeyboardListView/KeyboardListView';
+import KeyboardListView from './KeyboardListView';
   
 storiesOf('KeyboardListView', module)
 .add('test', () => (
