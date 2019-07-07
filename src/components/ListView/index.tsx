@@ -1,24 +1,42 @@
 import * as React from 'react';
+import { IContent, VIEW_TYPE } from 'types';
+import SlideView from './SlideView/index';
 // import * as ReactDOM from 'react-dom';
 
-interface IKeyboardListViewProps {
+interface IListViewProps {
+  type?: VIEW_TYPE;
+  width?: number | string;
+  height?: number | string;
+  contentWidth?: number | string;
+  contentHeight?: number | string;
+  list: IContent[];
 }
 
-interface IKeyboardListViewState {
+interface IListViewState {
 }
 
-class KeyboardListView extends React.Component<IKeyboardListViewProps, IKeyboardListViewState> {
-  constructor(props: IKeyboardListViewProps) {
+class ListView extends React.Component<IListViewProps, IListViewState> {
+  constructor(props: IListViewProps) {
     super(props);
   }
-
+  
   render() {
     return (
-      <div>
-        <h1>Hello World!</h1>
+      <div
+        // style={{
+        //   width: this.props.width,
+        //   height: this.props.height,
+        // }}
+      >
+        {/* 
+        SlideView or MatrixView 가 삽입될 곳 
+        this.props.type === VIEW_TYPE.slide ?
+        <SlideView list={this.props.list} />
+        <MatrixView list={this.props.list} />
+        */}
       </div>
     );
   }
 };
 
-export default KeyboardListView;
+export default ListView;
