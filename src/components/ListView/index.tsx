@@ -29,10 +29,12 @@ class ListView extends React.Component<IListViewProps, IListViewState> {
         // }}
       >
         {/* 
-        SlideView or MatrixView 가 삽입될 곳 
-        this.props.type === VIEW_TYPE.slide ?
+          SlideView or MatrixView 가 삽입될 곳 
+          this.props.type === VIEW_TYPE.slide ?
+        */}
         <SlideView list={this.props.list} />
-        <MatrixView list={this.props.list} />
+        {/*
+          : <MatrixView list={this.props.list} />
         */}
       </div>
     );
