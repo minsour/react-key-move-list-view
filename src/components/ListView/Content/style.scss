@@ -1,0 +1,12 @@
+.content {
+  border: 5px #fff solid;
+  .image-wrapper {
+    position:relative;
+
+    img {
+      border: 0;
+      width: 13vw;
+      height: 10vw;
+    }
+  }
+}
