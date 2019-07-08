@@ -27,6 +27,11 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
     const {slideList, activeContent} = this.state;
     return (
       <div className="contents-row" id={`active-content-${activeContent.index}`}>
+        <div className="focus-box" style={{
+          // 화면 크기에 유동적일 수 있도록 수정 필요할 듯(7이 아니라 수학적인 수식으로)
+          'transform': `translateX(${activeContent.index>=slideList.length-7 && 
+          (activeContent.index-(slideList.length-7))*100}%)`
+        }}/>
         <div className="contents-wrapper" style={{
           // 화면 크기에 유동적일 수 있도록 수정 필요할 듯(6이 아니라 수학적인 수식으로)
           'transform': `translateX(-${activeContent.index<slideList.length-6 && 
