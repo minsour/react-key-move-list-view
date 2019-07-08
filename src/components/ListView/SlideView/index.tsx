@@ -22,7 +22,7 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
       activeContent: this.props.list[0]
     }
   }
-
+  
   render() {
     const {slideList, activeContent} = this.state;
     return (
@@ -39,7 +39,7 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
         }}>
           {
             // list 렌덩링 
-            // slideList.map(content => <Content key={content._id} content={content} />)
+            slideList.map(content => <Content key={content._id} content={content} />)
           }
         </div>
       </div>
