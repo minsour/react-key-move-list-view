@@ -23,7 +23,15 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
       activeContent: this.props.list[0]
     }
   }
-  
+
+  componentDidMount(){
+    document.addEventListener(KEY_DOWN, this.onKeyDown);
+  };
+
+  componentWillUnmount() {
+    document.removeEventListener(KEY_DOWN, this.onKeyDown);
+  };
+
   right = () => {
     const newIndex = this.state.activeContent.index+1;
     this.setState({
