@@ -23,7 +23,7 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
       activeContent: this.props.list[0]
     }
   }
-
+  
   right = () => {
     const newIndex = this.state.activeContent.index+1;
     this.setState({
@@ -37,6 +37,17 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
       activeContent: this.props.list[newIndex]
     })
   }
+
+  private onKeyDown = (event: any) => {
+		switch (event.keyCode) {
+			case LEFT_KEY:
+				this.left();
+				break;
+			case RIGHT_KEY:
+				this.right();
+				break;
+		}
+  };
 
   render() {
     const {slideList, activeContent} = this.state;
