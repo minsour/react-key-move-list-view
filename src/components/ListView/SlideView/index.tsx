@@ -2,6 +2,7 @@ import * as React from 'react';
 import Content from '../Content';
 import { IContent } from 'types';
 import './style.scss'
+import { KEY_DOWN, LEFT_KEY, RIGHT_KEY } from '../../../constants';
 
 interface ISlideViewProps { 
   contentWidth?: number | string;
@@ -22,7 +23,21 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
       activeContent: this.props.list[0]
     }
   }
-  
+
+  right = () => {
+    const newIndex = this.state.activeContent.index+1;
+    this.setState({
+      activeContent: this.props.list[newIndex]
+    })
+  }
+
+  left = () => {
+    const newIndex = this.state.activeContent.index-1;
+    this.setState({
+      activeContent: this.props.list[newIndex]
+    })
+  }
+
   render() {
     const {slideList, activeContent} = this.state;
     return (
