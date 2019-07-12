@@ -9,8 +9,8 @@ interface IContentProps {
 const Content = (props: IContentProps) => {
   const {index, image, title, description} = props.content;
   return (
-    <div id={`content-${index}`} className="content">
-      <div className="image-wrapper">
+    <div id = {`content-${index}`} className = "content">
+      <div className = "image-wrapper">
         <img src={image} alt={title} />
         <p className="details">
           <span className="title">

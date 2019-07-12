@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IContent, VIEW_TYPE } from 'types';
 import SlideView from './SlideView/index';
-// import * as ReactDOM from 'react-dom';
+//import MatrixView from './MatrixView/index';
 
 interface IListViewProps {
   type?: VIEW_TYPE;
@@ -12,8 +12,7 @@ interface IListViewProps {
   list: IContent[];
 }
 
-interface IListViewState {
-}
+interface IListViewState {}
 
 class ListView extends React.Component<IListViewProps, IListViewState> {
   constructor(props: IListViewProps) {

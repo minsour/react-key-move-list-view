@@ -24,29 +24,35 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
     }
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
     document.addEventListener(KEY_DOWN, this.onKeyDown);
   };
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     document.removeEventListener(KEY_DOWN, this.onKeyDown);
   };
 
   right = () => {
-    const newIndex = this.state.activeContent.index+1;
-    this.setState({
-      activeContent: this.props.list[newIndex]
-    })
+    if(this.props.list[this.state.activeContent.index+1] !== undefined)
+    {
+      const newIndex = this.state.activeContent.index+1;
+      this.setState({
+        activeContent: this.props.list[newIndex]
+      })
+    }
   }
 
   left = () => {
-    const newIndex = this.state.activeContent.index-1;
-    this.setState({
-      activeContent: this.props.list[newIndex]
-    })
+    if(this.props.list[this.state.activeContent.index-1] !== undefined)
+    {
+      const newIndex = this.state.activeContent.index-1;
+      this.setState({
+        activeContent: this.props.list[newIndex]
+      })
+    }
   }
-
-  private onKeyDown = (event: any) => {
+  // event Type 지정 (any → KeyboardEvent)
+  private onKeyDown = (event: KeyboardEvent) => {
 		switch (event.keyCode) {
 			case LEFT_KEY:
 				this.left();
@@ -72,7 +78,7 @@ class SlideView extends React.Component<ISlideViewProps, ISlideViewState> {
           activeContent.index*(100/slideList.length)}%)`
         }}>
           {
-            // list 렌덩링 
+            // list 렌더링 
             slideList.map(content => <Content key={content._id} content={content} />)
           }
         </div>
