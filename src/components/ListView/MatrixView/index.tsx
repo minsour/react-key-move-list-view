@@ -8,11 +8,13 @@ interface IMatrixViewProps {
     contentWidth?: number | string;
     contentHeight?: number | string;
     list: IContent[];
+    shape: number;
 }
 
 interface IMatrixViewState {
     matrixList : IContent[];
     activeContent: IContent;
+    matrixShape : number;
 }
 
 class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
@@ -21,6 +23,7 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
         this.state = {
             matrixList: this.props.list,
             activeContent: this.props.list[0],
+            matrixShape: this.props.shape,
         }
     }
 
@@ -33,41 +36,41 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
     }
 
     left = () => {
-        if((this.state.activeContent.index-1) % 2 >= 0)
+        if((this.state.activeContent.index) % this.state.matrixShape !== 0)
         {
             const newIndex = this.state.activeContent.index-1;
             this.setState({
-                activeContent: this.props.list[newIndex]
+                activeContent: this.props.list[newIndex],
             })
         }
     }
     
     right = () => {
-        if((this.state.activeContent.index+1) % 2 !== 0)
+        if((this.state.activeContent.index+1) % this.state.matrixShape !== 0)
         {
             const newIndex = this.state.activeContent.index+1;
             this.setState({
-                activeContent: this.props.list[newIndex]
+                activeContent: this.props.list[newIndex],
             })
         }
     }
 
     up = () => {
-        if((this.state.activeContent.index-2) >= 0)
+        if((this.state.activeContent.index-this.state.matrixShape) >= 0)
         {
-            const newIndex = this.state.activeContent.index-2;
+            const newIndex = this.state.activeContent.index-this.state.matrixShape;
             this.setState({
-                activeContent: this.props.list[newIndex]
+                activeContent: this.props.list[newIndex],
             })
         }
     }
     
     down = () => {
-        if((this.state.activeContent.index+2) < this.props.list.length)
+        if((this.state.activeContent.index+this.state.matrixShape) < this.props.list.length)
         {
-            const newIndex = this.state.activeContent.index+2;
+            const newIndex = this.state.activeContent.index+this.state.matrixShape;
             this.setState({
-                activeContent: this.props.list[newIndex]
+                activeContent: this.props.list[newIndex],
             })
         }
     }
@@ -91,36 +94,29 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
 
     private renderContent(index:number)
     {
-        const columns = [this.state.matrixList[index-1], this.state.matrixList[index]];
+        const columns = this.state.matrixList.slice(index-this.state.matrixShape+1,index+1);
         return (
-            <div className = "column" key = {index}>
-                {columns.map((column) => {
-                    return (
-                        <Content key = {column._id} content = {column}/>
-                    );
-            })}
-            </div>
+            <section className = "column" key = {index}>
+                {columns.map((column) => <Content key = {column._id} content = {column}/>)}
+            </section>
         );
     };
 
     render() {
         const {matrixList, activeContent} = this.state;
+        const locationX = Math.floor(activeContent.index%this.state.matrixShape);
+        const locationY = Math.floor(activeContent.index/this.state.matrixShape);
+        const moveFocusBox = {
+            'transform': `translate(${(locationX*100)}%, ${locationY*105}%)`
+        }
         return (
           <div className="contents-row" id={`active-content-${activeContent.index}`}>
-            <div className="focus-box" style={{
-              // 화면 크기에 유동적일 수 있도록 수정 필요할 듯(7이 아니라 수학적인 수식으로)
-              'transform': `translateX(${activeContent.index>=matrixList.length-7 && 
-              (activeContent.index-(matrixList.length-7))*100}%)`
-            }}/>
-            <div className="contents-wrapper" style={{
-              // 화면 크기에 유동적일 수 있도록 수정 필요할 듯(6이 아니라 수학적인 수식으로)
-              'transform': `translateX(-${activeContent.index<matrixList.length-6 && 
-              activeContent.index*(100/matrixList.length)}%)`
-            }}>
+            <div className="focus-box" style={moveFocusBox}/>
+            <div className="contents-wrapper">
               {
                 // list 렌더링 
                 matrixList.map((content, index) => {
-                  return index % 2 ? this.renderContent(index) : '';
+                  return (index % this.state.matrixShape === this.state.matrixShape-1 ? this.renderContent(index) : null);
                 })
               }
             </div>
