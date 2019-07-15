@@ -17,18 +17,33 @@ interface IMatrixViewState {
     matrixShape : number;
     windowWidth: number;
     windowHeight: number;
+    focusBoxWidth: number;
+    focusBoxHeight: number;
 }
 
 class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
+    private focusBox = React.createRef<HTMLDivElement>();
     constructor(props: IMatrixViewProps){
         super(props);
+        this.focusBox = React.createRef();
         this.state = {
             matrixList: this.props.list,
             activeContent: this.props.list[0],
             matrixShape: this.props.shape,
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight,
+            focusBoxHeight: 0,
+            focusBoxWidth: 0,
         }
+        const checkFocusBox = setInterval(() => {
+            if(this.focusBox.current!= null){
+                this.setState({
+                    focusBoxHeight: this.focusBox.current.offsetHeight,
+                    focusBoxWidth: this.focusBox.current.offsetWidth,
+                });
+                clearInterval(checkFocusBox);
+            }
+        })
     }
 
     componentDidMount = () => {
@@ -38,7 +53,7 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
 
     componentWillUnmount = () => {
         window.removeEventListener('resize', this.updateWindowDimensions);
-        document.addEventListener(KEY_DOWN, this.handleKeyDown);
+        document.removeEventListener(KEY_DOWN, this.handleKeyDown);
     }
 
     left = () => {
@@ -99,10 +114,20 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
     }
 
     private updateWindowDimensions = () => {
-        this.setState({
-            windowWidth: window.innerWidth,
-            windowHeight: window.innerHeight,
-        })
+        const box = this.focusBox.current;
+        if(box != null)
+        {
+            this.setState({
+                windowWidth: window.innerWidth,
+                windowHeight: window.innerHeight,
+                focusBoxWidth: box.offsetWidth,
+                focusBoxHeight: box.offsetHeight,
+            });
+            console.log("windowWidth", this.state.windowWidth);
+            console.log("windowHeight", this.state.windowHeight);
+            console.log("focusBoxWidth", this.state.focusBoxWidth);
+            console.log("focusBoxHeight", this.state.focusBoxHeight);
+        }
     }
 
     private renderContent(index:number)
@@ -116,20 +141,34 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
     };
 
     render() {
-        const {matrixList, activeContent} = this.state;
+        const {matrixList, activeContent, focusBoxWidth, focusBoxHeight, windowWidth, windowHeight} = this.state;
+        const widthNum = Math.floor(windowWidth / focusBoxWidth);
+        const heightNum = Math.floor(windowHeight / focusBoxHeight);
         const locationX = Math.floor(activeContent.index%this.state.matrixShape);
         const locationY = Math.floor(activeContent.index/this.state.matrixShape);
+        const maxY = Math.floor(matrixList.length / this.state.matrixShape);
+        const maxX = Math.floor((matrixList.length)/maxY);
+        console.log("widthNum:",widthNum);
+        console.log("heightNum:", heightNum);
+        console.log("maxX:",maxX);
+        console.log("maxY:",maxY);
+        console.log("locationX:",locationX);
+        console.log("locationY:",locationY);
+
         const moveFocusBox = {
-            'transform': `translate(${(locationX*100)}%, ${locationY*100}%)`
+            'transform': `translate(${locationX < widthNum &&(locationX*100)}%, ${locationY < heightNum && (locationY*100)}%)`
+        }
+        const moveContentsWrapper = {
+            'transform': `translateY(${locationY >= heightNum ? ((heightNum - (locationY+1)) * (100/maxY)) : 0}%)`
         }
         return (
           <div className="contents-row" id={`active-content-${activeContent.index}`}>
-            <div className="focus-box" style={moveFocusBox}/>
-            <div className="contents-wrapper">
+            <div className="focus-box" style= {moveFocusBox} ref={this.focusBox}/>
+              <div className="contents-wrapper" style = {moveContentsWrapper}>
               {
                 // list 렌더링 
                 matrixList.map((content, index) => {
-                  return (index % this.state.matrixShape === this.state.matrixShape-1 ? this.renderContent(index) : null);
+                return (index % this.state.matrixShape === this.state.matrixShape-1 ? this.renderContent(index) : null);
                 })
               }
             </div>
