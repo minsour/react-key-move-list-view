@@ -107,7 +107,7 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
         const locationX = Math.floor(activeContent.index%this.state.matrixShape);
         const locationY = Math.floor(activeContent.index/this.state.matrixShape);
         const moveFocusBox = {
-            'transform': `translate(${(locationX*100)}%, ${locationY*105}%)`
+            'transform': `translate(${(locationX*100)}%, ${locationY*100}%)`
         }
         return (
           <div className="contents-row" id={`active-content-${activeContent.index}`}>

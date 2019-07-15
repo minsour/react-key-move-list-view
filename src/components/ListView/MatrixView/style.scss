@@ -60,6 +60,8 @@ body {
       // margin: 4px 0px 4px 0px;
       // width: 15vw;
       // height: 8vw;
+      font-size: 0;
+      // div 중첩 선언 시 여백이 발생하는데 font-size를 0으로 하면 여백이 사라짐!
       opacity: 0.5;
       transform: scale(0.9);
       box-shadow: none;
