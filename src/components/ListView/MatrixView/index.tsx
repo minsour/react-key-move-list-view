@@ -15,6 +15,8 @@ interface IMatrixViewState {
     matrixList : IContent[];
     activeContent: IContent;
     matrixShape : number;
+    windowWidth: number;
+    windowHeight: number;
 }
 
 class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
@@ -24,14 +26,18 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
             matrixList: this.props.list,
             activeContent: this.props.list[0],
             matrixShape: this.props.shape,
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight,
         }
     }
 
     componentDidMount = () => {
+        window.addEventListener('resize', this.updateWindowDimensions);
         document.addEventListener(KEY_DOWN, this.handleKeyDown);
     }
 
     componentWillUnmount = () => {
+        window.removeEventListener('resize', this.updateWindowDimensions);
         document.addEventListener(KEY_DOWN, this.handleKeyDown);
     }
 
@@ -90,6 +96,13 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
                 this.down();
                 break;
         }
+    }
+
+    private updateWindowDimensions = () => {
+        this.setState({
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight,
+        })
     }
 
     private renderContent(index:number)
