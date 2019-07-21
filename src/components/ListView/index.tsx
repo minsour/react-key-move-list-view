@@ -1,43 +1,34 @@
 import * as React from 'react';
-import { IContent, VIEW_TYPE } from 'types';
+import { IContent, VIEW_TYPE } from '../../types';
 import MatrixView from './MatrixView/index';
-//import SlideView from './SlideView/index';
+import SlideView from './SlideView/index';
+import { useList } from '../../hooks';
 
 interface IListViewProps {
-  type?: VIEW_TYPE;
+  type?: string;
   width?: number | string;
   height?: number | string;
   contentWidth?: number | string;
   contentHeight?: number | string;
-  list: IContent[];
+  list: any[];
 }
 
-interface IListViewState {}
-
-class ListView extends React.Component<IListViewProps, IListViewState> {
-  constructor(props: IListViewProps) {
-    super(props);
-  }
+const ListView = (props: IListViewProps) => {
+  // const current = useCurrentLocation(props.list.length);
+  const list: IContent[] = useList(props.list);
   
-  render() {
-    return (
-      <div
-        // style={{
-        //   width: this.props.width,
-        //   height: this.props.height,
-        // }}
-      >
-        {/* 
-          SlideView or MatrixView 가 삽입될 곳 
-          this.props.type === VIEW_TYPE.slide ?
-        */}
-        <MatrixView list={this.props.list} shape={3}/>
-        {/*
-          : <MatrixView list={this.props.list} />
-        */}
-      </div>
-    );
-  }
+  return (
+    <div
+      // style={{
+      //   width: this.props.width,
+      //   height: this.props.height,
+      // }}
+    >
+      {props.type === VIEW_TYPE.SLIDE ?
+      <SlideView list={list} /> :
+      <MatrixView list={list} shape={4}/>}
+    </div>
+  );
 };
 
 export default ListView;

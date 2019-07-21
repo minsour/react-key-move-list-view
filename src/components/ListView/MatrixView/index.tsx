@@ -2,7 +2,7 @@ import * as React from 'react';
 import Content from '../Content';
 import { IContent } from 'types';
 import './style.scss';
-import { KEY_DOWN, LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY} from '../../../constants';
+import { KEY_EVENT, LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY} from '../../../constants';
 
 interface IMatrixViewProps {
     contentWidth?: number | string;
@@ -48,12 +48,12 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
 
     componentDidMount = () => {
         window.addEventListener('resize', this.updateWindowDimensions);
-        document.addEventListener(KEY_DOWN, this.handleKeyDown);
+        document.addEventListener(KEY_EVENT.down, this.handleKeyDown);
     }
 
     componentWillUnmount = () => {
         window.removeEventListener('resize', this.updateWindowDimensions);
-        document.removeEventListener(KEY_DOWN, this.handleKeyDown);
+        document.removeEventListener(KEY_EVENT.down, this.handleKeyDown);
     }
 
     left = () => {
@@ -162,9 +162,9 @@ class MatrixView extends React.Component<IMatrixViewProps, IMatrixViewState> {
             'transform': `translateY(${locationY >= heightNum ? ((heightNum - (locationY+1)) * (100/maxY)) : 0}%)`
         }
         return (
-          <div className="contents-row" id={`active-content-${activeContent.index}`}>
+          <div className="matrix-row" id={`active-content-${activeContent.index}`}>
             <div className="focus-box" style= {moveFocusBox} ref={this.focusBox}/>
-              <div className="contents-wrapper" style = {moveContentsWrapper}>
+              <div className="matrix-wrapper" style = {moveContentsWrapper}>
               {
                 // list 렌더링 
                 matrixList.map((content, index) => {
