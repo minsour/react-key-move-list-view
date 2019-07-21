@@ -5,7 +5,7 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
   }
-  .contents-row {
+  .matrix-row {
     max-width: 13vw;
     margin: 0 auto;
     transform: translateX(-41vw);
@@ -53,7 +53,7 @@ body {
       }
   }
   
-  .contents-wrapper {
+  .matrix-wrapper {
     position: absolute;
     transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
     .content {

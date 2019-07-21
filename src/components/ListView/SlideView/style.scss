@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
   overflow-x: hidden;
 }
-.contents-row {
+.slide-row {
   max-width: 13vw;
   margin: 0 auto;
   transform: translateX(-41vw);
@@ -52,7 +52,7 @@ $i: 0;
     }
 }
 
-.contents-wrapper {
+.slide-wrapper {
   display: flex;
   position: absolute;
   transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
