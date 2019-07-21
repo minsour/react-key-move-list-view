@@ -1,11 +1,14 @@
-const KEY_DOWN = "keydown";
+const KEY_EVENT = {
+  down: "keydown",
+  up: "keyup",
+};
 const LEFT_KEY = 37;
 const RIGHT_KEY = 39;
 const UP_KEY = 38;
 const DOWN_KEY = 40;
 
 export {
-  KEY_DOWN,
+  KEY_EVENT,
   LEFT_KEY,
   RIGHT_KEY,
   UP_KEY,
