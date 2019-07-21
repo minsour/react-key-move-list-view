@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IContent, VIEW_TYPE } from 'types';
-import SlideView from './SlideView/index';
-// import * as ReactDOM from 'react-dom';
+import MatrixView from './MatrixView/index';
+//import SlideView from './SlideView/index';
 
 interface IListViewProps {
   type?: VIEW_TYPE;
@@ -12,8 +12,7 @@ interface IListViewProps {
   list: IContent[];
 }
 
-interface IListViewState {
-}
+interface IListViewState {}
 
 class ListView extends React.Component<IListViewProps, IListViewState> {
   constructor(props: IListViewProps) {
@@ -32,7 +31,7 @@ class ListView extends React.Component<IListViewProps, IListViewState> {
           SlideView or MatrixView 가 삽입될 곳 
           this.props.type === VIEW_TYPE.slide ?
         */}
-        <SlideView list={this.props.list} />
+        <MatrixView list={this.props.list} shape={3}/>
         {/*
           : <MatrixView list={this.props.list} />
         */}
