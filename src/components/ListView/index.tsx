@@ -26,7 +26,7 @@ const ListView = (props: IListViewProps) => {
     >
       {props.type === VIEW_TYPE.SLIDE ?
       <SlideView list={list} /> :
-      <MatrixView list={list} shape={4}/>}
+      <MatrixView list={list} column ={10}/>}
     </div>
   );
 };
