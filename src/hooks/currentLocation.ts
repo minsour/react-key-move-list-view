@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { KEY_EVENT, LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY } from "../constants";
+import { EVENT, LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY } from "../constants";
 
 export const useCurrentContent = (width: number, height: number = 0) => {
   const [current, setCurrent] = useState({x: 0, y: 0});
@@ -39,9 +39,9 @@ export const useCurrentContent = (width: number, height: number = 0) => {
       }
     };
     
-    window.addEventListener(KEY_EVENT.down, onKeyDown);
+    window.addEventListener(EVENT.keyDown, onKeyDown);
     return () => {
-      window.removeEventListener(KEY_EVENT.down, onKeyDown);
+      window.removeEventListener(EVENT.keyDown, onKeyDown);
     };
   }, [current]);
 
