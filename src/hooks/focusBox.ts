@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, RefObject } from 'react';
+import { useState, useRef, useLayoutEffect, RefObject, useCallback } from 'react';
 import { EVENT } from "../constants";
 import { IFocusBox } from '../types';
 
@@ -9,15 +9,16 @@ export const useFocusbox = () => {
     ...state,
     ref: ref,
   };
-  const sizeHandler = (ref:RefObject<HTMLDivElement>)=> {
+  const setSize = (ref:RefObject<HTMLDivElement>)=> {
     setState({offsetWidth: ref.current!.offsetWidth, offsetHeight: ref.current!.offsetHeight});
   };
+  const sizeHandler = useCallback(() => setSize(ref), []);
 
   useLayoutEffect(() => {
-    sizeHandler(ref);
-    window.addEventListener(EVENT.resize, () => sizeHandler(ref));
+    sizeHandler();
+    window.addEventListener(EVENT.resize, sizeHandler);
     return () => {
-      window.removeEventListener(EVENT.resize, () => sizeHandler(ref));
+      window.removeEventListener(EVENT.resize, sizeHandler);
     };
   }, []);
 
