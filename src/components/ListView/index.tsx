@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IContent, VIEW_TYPE } from '../../types';
 import MatrixView from './MatrixView/index';
 import SlideView from './SlideView/index';
-import { useList } from '../../hooks';
+import { useList} from '../../hooks';
 
 interface IListViewProps {
   type?: string;
@@ -17,7 +17,7 @@ interface IListViewProps {
 const ListView = (props: IListViewProps) => {
   // const current = useCurrentLocation(props.list.length);
   const list: IContent[] = useList(props.list);
-  
+
   return (
     <div
       // style={{

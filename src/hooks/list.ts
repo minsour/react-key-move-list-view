@@ -3,8 +3,8 @@ import { IContent } from '../types';
 
 export const useList = (newList: IContent[] = []) => {
   const [list] = useState(newList);
-  // useEffect(() => {
+  //useEffect(() => {
     
-  // },[list])
+  //},[list])
   return list;
 };
