@@ -1,4 +1,12 @@
-import { EVENT, LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY} from './keyboard';
+import {
+  EVENT, 
+  LEFT_KEY, 
+  RIGHT_KEY, 
+  UP_KEY, 
+  DOWN_KEY,
+  ENTER,
+  ESC,
+} from './keyboard';
 
 export {
   EVENT,
@@ -6,4 +14,6 @@ export {
   RIGHT_KEY,
   UP_KEY,
   DOWN_KEY,
+  ENTER,
+  ESC,
 }
