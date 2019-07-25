@@ -11,6 +11,7 @@ interface IListViewProps {
   contentWidth?: number | string;
   contentHeight?: number | string;
   list: any[];
+  action?: boolean;
 }
 
 const ListView = (props: IListViewProps) => {
@@ -23,10 +24,12 @@ const ListView = (props: IListViewProps) => {
       //   width: this.props.width,
       //   height: this.props.height,
       // }}
+      style={{width: '100%', height: props.height}}
     >
+      {props.action && props.action}
       {props.type === VIEW_TYPE.SLIDE ?
-      <SlideView list={list} /> :
-      <MatrixView list={list} column ={10}/>}
+      <SlideView list={list} action={props.action && props.action}/> :
+      <MatrixView list={list} column ={5}/>}
     </div>
   );
 };

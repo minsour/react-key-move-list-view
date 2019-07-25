@@ -10,10 +10,11 @@ interface IMatrixViewProps {
     contentHeight?: number | string;
     list: IContent[];
     column: number;
+    action?: boolean
 };
 
 const MatrixView = (props: IMatrixViewProps) => {
-    const current = useCurrentContent(props.column, Math.floor(props.list.length / props.column));
+    const current = useCurrentContent(props.column, Math.floor(props.list.length / props.column), props.action && props.action);
     const windowDimensions = useWindowDimensions();
     const focus = useFocusbox();
     const [pageRow,pageCol] = [Math.floor(windowDimensions.height/focus.offsetHeight),Math.floor(windowDimensions.width/focus.offsetWidth)];
