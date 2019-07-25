@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListView from '../src/components/ListView';
-import data from '../data';
+import ListView from '../../src/components/ListView';
+import data from '../../data';
   
-storiesOf('SlideView', module)
+storiesOf('ListView|SlideView', module)
 .add('default', () => (
   <ListView list={data} type="slide"/>
 ));

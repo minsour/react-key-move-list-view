@@ -11,7 +11,13 @@ interface IFocusBox {
   offsetHeight: number
 };
 
+interface IViewState {
+  current: number,
+  actions: boolean[]
+}
+
 export {
   ICurrent,
   IFocusBox,
+  IViewState,
 }
