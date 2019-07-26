@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useCurrentView } from '../../hooks/index';
+import { useContainer } from './hooks';
 // import ListView from 'components/ListView';
 // import data from '../../../data';
 
@@ -8,7 +8,7 @@ interface IViewContainerProps {
 }
 
 const ViewContainer = (props: IViewContainerProps) => {
-  const viewState = useCurrentView(2);
+  const viewState = useContainer(2);
   
   return (
     <div //style={{position: 'relative'}}

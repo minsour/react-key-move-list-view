@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IContent } from '../types';
+import { IContent } from '../../types/index';
 
 export const useList = (newList: IContent[] = []) => {
   const [list] = useState(newList);

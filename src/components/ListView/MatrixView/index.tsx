@@ -2,7 +2,7 @@ import * as React from 'react';
 import Content from '../Content';
 import { IContent, VIEW_TYPE } from '../../../types';
 import './style.scss'
-import { useCurrentContent, useWindowDimensions, useFocusbox } from '../../../hooks';
+import { useCurrentContent, useWindowDimensions, useFocusbox } from '../../../hooks/index';
 import FocusBox from '../FocusBox';
 
 interface IMatrixViewProps {

@@ -1,6 +1,6 @@
 import { useState, useRef, useLayoutEffect, RefObject, useCallback } from 'react';
-import { EVENT } from "../constants";
-import { IFocusBox } from '../types';
+import { EVENT } from "../../../constants/index";
+import { IFocusBox } from '../../../types/index';
 
 export const useFocusbox = () => {
   const [state, setState] = useState({offsetWidth: 0, offsetHeight: 0});
