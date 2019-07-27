@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { ViewContainerProvider } from './context';
-// import { useViewContainer } from './hooks';
-// import ListView from 'components/ListView';
-// import data from '../../../data';
 
 interface IViewContainerProps {
   render: () => JSX.Element;

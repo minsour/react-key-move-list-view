@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { EVENT, LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY } from "../constants/index";
-import { ICurrent } from "types";
+import { ICurrent } from "../types/index";
 
 export const useCurrentContent = (width: number, height: number, action: boolean = true) => {
   const [current, setCurrent] = useState<ICurrent>({x: 0, y: 0});
