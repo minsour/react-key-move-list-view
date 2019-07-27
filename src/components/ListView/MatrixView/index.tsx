@@ -2,7 +2,7 @@ import * as React from 'react';
 import Content from '../Content/index';
 import { IContent, VIEW_TYPE } from '../../../types/index';
 import './style.scss'
-import { useCurrentContent, useWindowDimensions, useFocusbox } from '../../../hooks/index';
+import { useCurrentContent, useWindowDimensions, useFocusBox } from '../../../hooks/index';
 import FocusBox from '../FocusBox/index';
 
 interface IMatrixViewProps {
@@ -16,7 +16,7 @@ interface IMatrixViewProps {
 const MatrixView = (props: IMatrixViewProps) => {
     const current = useCurrentContent(props.column, Math.floor(props.list.length / props.column), props.action && props.action);
     const windowDimensions = useWindowDimensions();
-    const focus = useFocusbox();
+    const focus = useFocusBox();
     const [pageRow,pageCol] = [Math.floor(windowDimensions.height/focus.offsetHeight),Math.floor(windowDimensions.width/focus.offsetWidth)];
     const [contentRow, contentCol] = [Math.floor(props.list.length/props.column), props.column];
     
@@ -46,7 +46,7 @@ const MatrixView = (props: IMatrixViewProps) => {
                 pageRow={pageRow}
                 contentCol={contentCol}
                 current={current}
-                focus={focus}
+                focusBox={focus}
                 type={VIEW_TYPE.MATRIX}
             />
             <div className="matrix-wrapper" style={moveMatrixWrapper}>
