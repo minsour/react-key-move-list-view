@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Content from '../Content';
-import { IContent, VIEW_TYPE } from '../../../types';
+import Content from '../Content/index';
+import { IContent, VIEW_TYPE } from '../../../types/index';
 import './style.scss'
 import { useCurrentContent, useWindowDimensions, useFocusbox } from '../../../hooks/index';
-import FocusBox from '../FocusBox';
+import FocusBox from '../FocusBox/index';
 
 interface IMatrixViewProps {
     contentWidth?: number | string;

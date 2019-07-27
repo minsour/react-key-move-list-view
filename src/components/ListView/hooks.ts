@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { IContent } from '../../types/index';
 
-export const useList = (newList: IContent[] = []) => {
-  const [list] = useState(newList);
+export const useListView = (newList: IContent[]) => {
+  const [list] = useState<IContent[]>(newList);
+
   //useEffect(() => {
     
   //},[list])

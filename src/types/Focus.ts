@@ -13,7 +13,7 @@ interface IFocusBox {
 
 interface IViewState {
   current: number,
-  actions: boolean[]
+  action: boolean
 }
 
 export {

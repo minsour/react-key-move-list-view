@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IContent, VIEW_TYPE } from '../../types';
+import { VIEW_TYPE } from '../../types';
 import MatrixView from './MatrixView/index';
 import SlideView from './SlideView/index';
-import { useList } from './hooks';
+import { useListView } from './hooks';
+// import { ViewContainerContext } from '../ViewContainer/context';
 
 interface IListViewProps {
   type?: string;
@@ -11,12 +12,16 @@ interface IListViewProps {
   contentWidth?: number | string;
   contentHeight?: number | string;
   list: any[];
-  action?: boolean;
+  index?: number;
+  currentView?: number;
 }
 
 const ListView = (props: IListViewProps) => {
   // const current = useCurrentLocation(props.list.length);
-  const list: IContent[] = useList(props.list);
+  const list = useListView(props.list);
+  // const viewContainer = React.useContext(ViewContainerContext);
+  // console.log('list currnetView '+props.currentView);
+  // console.log(viewContainer);
 
   return (
     <div
@@ -26,10 +31,11 @@ const ListView = (props: IListViewProps) => {
       // }}
       style={{width: '100%', height: props.height}}
     >
-      {props.action && props.action}
-      {props.type === VIEW_TYPE.SLIDE ?
-      <SlideView list={list} action={props.action && props.action}/> :
-      <MatrixView list={list} column ={5}/>}
+      {
+        props.type === VIEW_TYPE.SLIDE ?
+        <SlideView list={list} index={props.index && props.index} currentView={props.currentView && props.currentView}/> :
+        <MatrixView list={list} column ={5}/>
+      }
     </div>
   );
 };
