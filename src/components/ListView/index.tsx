@@ -24,7 +24,7 @@ const ListView = (props: IListViewProps) => {
       //   width: this.props.width,
       //   height: this.props.height,
       // }}
-      style={{width: '100%', height: props.height}}
+      style={{height: props.height}}
     >
       {
         props.type === VIEW_TYPE.SLIDE ?
