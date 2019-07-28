@@ -1,20 +1,17 @@
 import * as React from 'react';
-import { useCurrentView } from '../../hooks/index';
-// import ListView from 'components/ListView';
-// import data from '../../../data';
+import { ViewContainerProvider } from './context';
 
 interface IViewContainerProps {
-  render: (actions: boolean[]) => JSX.Element;
+  render: () => JSX.Element;
 }
 
 const ViewContainer = (props: IViewContainerProps) => {
-  const viewState = useCurrentView(2);
-  
   return (
-    <div //style={{position: 'relative'}}
-    >
-      {props.render(viewState.actions)}
-    </div>
+    <ViewContainerProvider>
+      <div>
+        {props.render()}
+      </div>
+    </ViewContainerProvider>
   );
 };
 

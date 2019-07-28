@@ -2,46 +2,63 @@ import * as React from 'react';
 import Content from '../Content';
 import { IContent, VIEW_TYPE } from '../../../types';
 import './style.scss'
-import { useCurrentContent, useWindowDimensions, useFocusbox } from '../../../hooks';
 import FocusBox from '../FocusBox';
+import { useWindowDimensions, useFocusBox, useListView } from '../../../hooks';
 
 interface ISlideViewProps { 
   contentWidth?: number | string;
   contentHeight?: number | string;
   list: IContent[];
-  action?: boolean;
+  index?: number;
+  currentView?: number;
+  title?: string;
 }
 
 const SlideView = (props: ISlideViewProps) => {
-  const current = useCurrentContent(props.list.length, 0, props.action && props.action);
+  const slideView = useListView(3, props.index!);
   const windowDimensions = useWindowDimensions();
-  const focus = useFocusbox();
+  const focus = useFocusBox();
   const pageCol = Math.floor(windowDimensions.width/focus.offsetWidth);
   const contentCol = props.list.length;
   
   const moveSlideWrapper = {
-    'transform': `translateX(-${current.x< contentCol-pageCol+1 && current.x*(100/contentCol)}%)`
+    'transform': `translateX(-${slideView.currentContent.x< contentCol-pageCol+1 && slideView.currentContent.x*(100/contentCol)}%)`
   };
 
   const renderContents = () => (
     props.list.map(content => <Content key={content._id} content={content} />)
   );
 
-  console.log(current.x);
-  return (
-    <div className="slide-row" id={`active-content-${current.x}`}>
-      <FocusBox
-        pageCol={pageCol}
-        contentCol={contentCol}
-        current={current}
-        focus={focus}
-        type={VIEW_TYPE.SLIDE}
-        action={props.action && props.action}
-      />
-      <div className="slide-wrapper" style={moveSlideWrapper}>
-        {renderContents()}
+  const renderTitle = () => {
+    if(props.index === void 0) return;
+    return(
+      <div style={{margin: '1vw 3vw', fontWeight: 'bold', fontSize: '18px', color: slideView.action ? '#4DA6F6' : (slideView.focus ? '#F29661' : '#606060')}}>
+        {slideView.focus && slideView.focus!==slideView.action ? `> ${props.title}` : props.title}
       </div>
-    </div>
+    );
+  };
+
+  console.log('currentView '+slideView.currentView);
+  console.log(slideView);
+  console.log('index ' + props.index)
+  return (
+    <>
+      {renderTitle()}
+      <div className="slide-row" id={`active-content-${slideView.currentContent.x}`}>
+        <FocusBox
+          pageCol={pageCol}
+          contentCol={contentCol}
+          current={slideView.currentContent}
+          focusBox={focus}
+          type={VIEW_TYPE.SLIDE}
+          focus={(props.index === void 0) ? true : slideView.focus}
+          action={(props.index === void 0) ? true : slideView.action }
+        />
+        <div className="slide-wrapper" style={moveSlideWrapper}>
+          {renderContents()}
+        </div>
+      </div>
+    </>
   );
 }
 

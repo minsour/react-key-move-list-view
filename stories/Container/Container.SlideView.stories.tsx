@@ -6,11 +6,11 @@ import data from '../../data';
   
 storiesOf('Container|SlideView', module)
 .add('default', () => {
-  const renderListViews = (actions: boolean[] = []) => (
+  const renderListViews = () => (
     <>
-      {console.log(actions)}
-      <ListView list={data} type="slide" height='150px' action={actions[0]}/>
-      <ListView list={data} type="slide" height='150px' action={actions[1]}/>
+      <ListView index={0} title="인기 영화" list={data} type="slide" height='15vw' />
+      <ListView index={1} title="인기 드라마" list={data} type="slide" height='15vw' />
+      <ListView index={2} title="인기 예능" list={data} type="slide" height='15vw' />
     </>
   );
 

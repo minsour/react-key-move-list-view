@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import ListView from '../../src/components/ListView';
 
-import {useFetch} from '../../src/hooks';
+import {useFetch} from '../apis/fetchUrl';
 
 const Demo = () => {
   let proxyUrl = 'https://cors-anywhere.herokuapp.com/';

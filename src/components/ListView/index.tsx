@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IContent, VIEW_TYPE } from '../../types';
+import { VIEW_TYPE } from '../../types';
 import MatrixView from './MatrixView/index';
 import SlideView from './SlideView/index';
-import { useList} from '../../hooks';
+import { useList } from '../../hooks';
 
 interface IListViewProps {
   type?: string;
@@ -11,12 +11,12 @@ interface IListViewProps {
   contentWidth?: number | string;
   contentHeight?: number | string;
   list: any[];
-  action?: boolean;
+  index?: number;
+  title?: string;
 }
 
 const ListView = (props: IListViewProps) => {
-  // const current = useCurrentLocation(props.list.length);
-  const list: IContent[] = useList(props.list);
+  const list = useList(props.list);
 
   return (
     <div
@@ -26,10 +26,11 @@ const ListView = (props: IListViewProps) => {
       // }}
       style={{width: '100%', height: props.height}}
     >
-      {props.action && props.action}
-      {props.type === VIEW_TYPE.SLIDE ?
-      <SlideView list={list} action={props.action && props.action}/> :
-      <MatrixView list={list} column ={5}/>}
+      {
+        props.type === VIEW_TYPE.SLIDE ?
+        <SlideView list={list} title={props.title} index={props.index && props.index} /> :
+        <MatrixView list={list} column ={5}/>
+      }
     </div>
   );
 };
