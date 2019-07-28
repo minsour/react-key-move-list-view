@@ -46,7 +46,6 @@ const MatrixView = (props: IMatrixViewProps) => {
                 pageRow={pageRow}
                 contentCol={contentCol}
                 current={current}
-                focusBox={focus}
                 type={VIEW_TYPE.MATRIX}
             />
             <div className="matrix-wrapper" style={moveMatrixWrapper}>
