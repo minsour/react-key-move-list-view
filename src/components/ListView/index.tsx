@@ -17,19 +17,14 @@ interface IListViewProps {
 
 const ListView = (props: IListViewProps) => {
   const list = useList(props.list);
-
   return (
     <div
-      // style={{
-      //   width: this.props.width,
-      //   height: this.props.height,
-      // }}
       style={{width: '100%', height: props.height}}
     >
       {
         props.type === VIEW_TYPE.SLIDE ?
-        <SlideView list={list} title={props.title} index={props.index && props.index} /> :
-        <MatrixView list={list} column ={5}/>
+        <SlideView list={list} title={props.title} index={props.index && props.index} contentWidth ={"18vw"} contentHeight = {"10vw"}/> :
+        <MatrixView list={list} column ={4} contentWidth = {"18vw"} contentHeight = {"10vw"} height = {"22vw"}/>
       }
     </div>
   );

@@ -6,8 +6,8 @@ import FocusBox from '../FocusBox';
 import { useWindowDimensions, useFocusBox, useListView } from '../../../hooks';
 
 interface ISlideViewProps { 
-  contentWidth?: number | string;
-  contentHeight?: number | string;
+  contentWidth?: string;
+  contentHeight: string;
   list: IContent[];
   index?: number;
   currentView?: number;
@@ -26,7 +26,7 @@ const SlideView = (props: ISlideViewProps) => {
   };
 
   const renderContents = () => (
-    props.list.map(content => <Content key={content._id} content={content} />)
+    props.list.map(content => <Content key={content._id} content={content} currentIndex = {slideView.currentContent.x} width = {`${props.contentWidth}`} height = {`${props.contentHeight}`}/>)
   );
 
   const renderTitle = () => {
@@ -38,14 +38,13 @@ const SlideView = (props: ISlideViewProps) => {
     );
   };
 
-  console.log('currentView '+slideView.currentView);
-  console.log(slideView);
-  console.log('index ' + props.index)
   return (
     <>
       {renderTitle()}
-      <div className="slide-row" id={`active-content-${slideView.currentContent.x}`}>
+      <div className="slide-row">
         <FocusBox
+          width = {`${props.contentWidth}`}
+          height = {`${props.contentHeight}`}
           pageCol={pageCol}
           contentCol={contentCol}
           current={slideView.currentContent}

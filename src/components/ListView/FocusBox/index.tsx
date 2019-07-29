@@ -10,11 +10,15 @@ interface IFocusBoxProps {
   focus?: boolean;
   type: VIEW_TYPE;
   action?: boolean;
+  width?: string | number;
+  height?: string | number;
 }
 
 const FocusBox = (props: IFocusBoxProps) => {
   const { pageCol, pageRow, contentCol, current, focusBox: focus } = props;
   const moveFocusBox = {
+    'width': props.width,
+    'height': props.height,
     'transform': props.type === VIEW_TYPE.SLIDE ?
       `translateX(${current.x >= contentCol - pageCol && (current.x-(contentCol-pageCol))*100}%)` :
       `translate(${current.x  < pageCol ? (current.x*100):((pageCol-1)*100)}%, ${current.y< pageRow! ? (current.y*100):((pageRow!-1)*100)}%)`,
