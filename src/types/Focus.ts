@@ -1,6 +1,14 @@
+import { RefObject } from "react";
+
 interface ICurrent {
   x: number,
   y: number
+};
+
+interface IFocusBox {
+  ref: RefObject<HTMLDivElement>,
+  offsetWidth: number,
+  offsetHeight: number
 };
 
 interface IViewState {
@@ -10,5 +18,6 @@ interface IViewState {
 
 export {
   ICurrent,
+  IFocusBox,
   IViewState,
 }

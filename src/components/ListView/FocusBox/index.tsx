@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { ICurrent, VIEW_TYPE } from '../../../types';
+import { ICurrent, IFocusBox, VIEW_TYPE } from '../../../types';
 
 interface IFocusBoxProps { 
   pageCol: number;
   pageRow?: number;
   contentCol: number;
   current: ICurrent;
+  focusBox: IFocusBox;
   focus?: boolean;
   type: VIEW_TYPE;
   action?: boolean;
 }
 
 const FocusBox = (props: IFocusBoxProps) => {
-  const { pageCol, pageRow, contentCol, current } = props;
+  const { pageCol, pageRow, contentCol, current, focusBox: focus } = props;
   const moveFocusBox = {
     'transform': props.type === VIEW_TYPE.SLIDE ?
       `translateX(${current.x >= contentCol - pageCol && (current.x-(contentCol-pageCol))*100}%)` :
@@ -21,7 +22,7 @@ const FocusBox = (props: IFocusBoxProps) => {
   };
 
   return (
-    <div className="focus-box" style={moveFocusBox}/>
+    <div className="focus-box" style={moveFocusBox} ref={focus.ref}/>
   );
 }
 

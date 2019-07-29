@@ -3,7 +3,7 @@ import Content from '../Content';
 import { IContent, VIEW_TYPE } from '../../../types';
 import './style.scss'
 import FocusBox from '../FocusBox';
-import { useListView } from '../../../hooks';
+import { useWindowDimensions, useFocusBox, useListView } from '../../../hooks';
 
 interface ISlideViewProps { 
   contentWidth?: number | string;
@@ -16,9 +16,9 @@ interface ISlideViewProps {
 
 const SlideView = (props: ISlideViewProps) => {
   const slideView = useListView(3, props.index!);
-  // const windowDimensions = useWindowDimensions();
-  // const focus = useFocusBox();
-  const pageCol = Math.floor(100/13);
+  const windowDimensions = useWindowDimensions();
+  const focus = useFocusBox();
+  const pageCol = Math.floor(windowDimensions.width/focus.offsetWidth);
   const contentCol = props.list.length;
   
   const moveSlideWrapper = {
@@ -26,7 +26,7 @@ const SlideView = (props: ISlideViewProps) => {
   };
 
   const renderContents = () => (
-    props.list.map(content => <Content key={content._id} content={content} translateX={slideView.currentContent.x*(1700/contentCol)} />)
+    props.list.map(content => <Content key={content._id} content={content} />)
   );
 
   const renderTitle = () => {
@@ -41,7 +41,6 @@ const SlideView = (props: ISlideViewProps) => {
   console.log('currentView '+slideView.currentView);
   console.log(slideView);
   console.log('index ' + props.index)
-  console.log(slideView.currentContent.x*(100/contentCol));
   return (
     <>
       {renderTitle()}
@@ -50,6 +49,7 @@ const SlideView = (props: ISlideViewProps) => {
           pageCol={pageCol}
           contentCol={contentCol}
           current={slideView.currentContent}
+          focusBox={focus}
           type={VIEW_TYPE.SLIDE}
           focus={(props.index === void 0) ? true : slideView.focus}
           action={(props.index === void 0) ? true : slideView.action }
