@@ -13,7 +13,6 @@ interface IFocusBoxProps {
   width?: string | number;
   height?: string | number;
 }
-
 const FocusBox = (props: IFocusBoxProps) => {
   const { pageCol, pageRow, contentCol, current, focusBox: focus } = props;
   const moveFocusBox = {

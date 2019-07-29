@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContent } from 'types';
+import { IContent } from '../../../types';
 import './style.scss';
 
 interface IContentProps {

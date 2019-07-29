@@ -17,6 +17,8 @@ interface IListViewProps {
 
 const ListView = (props: IListViewProps) => {
   const list = useList(props.list);
+  // const windowWidth: number = 1600;
+  
   return (
     <div
       style={{width: '100%', height: props.height}}

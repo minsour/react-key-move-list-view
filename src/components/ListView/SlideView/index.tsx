@@ -20,10 +20,6 @@ const SlideView = (props: ISlideViewProps) => {
   const focus = useFocusBox();
   const pageCol = Math.floor(windowDimensions.width/focus.offsetWidth);
   const contentCol = props.list.length;
-  
-  const moveSlideWrapper = {
-    'transform': `translateX(-${slideView.currentContent.x< contentCol-pageCol+1 && slideView.currentContent.x*(100/contentCol)}%)`
-  };
 
   const renderContents = () => (
     props.list.map(content => <Content key={content._id} content={content} currentIndex = {slideView.currentContent.x} width = {`${props.contentWidth}`} height = {`${props.contentHeight}`}/>)
@@ -53,7 +49,7 @@ const SlideView = (props: ISlideViewProps) => {
           focus={(props.index === void 0) ? true : slideView.focus}
           action={(props.index === void 0) ? true : slideView.action }
         />
-        <div className="slide-wrapper" style={moveSlideWrapper}>
+        <div className="slide-wrapper" style={{transform: `translateX(-${(slideView.currentContent.x <= contentCol - pageCol) ? (slideView.currentContent.x)*4 : (contentCol - pageCol)*4}%)`}}>
           {renderContents()}
         </div>
       </div>
