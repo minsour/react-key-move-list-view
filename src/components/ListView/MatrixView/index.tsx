@@ -39,12 +39,11 @@ const MatrixView = (props: IMatrixViewProps) => {
 
     const moveMatrixWrapper = {
         //${current.y< pageRow! ? (current.y*100):((pageRow!-1)*100)}%
-        'height' : `${props.height}`,
         'transform' : `translate(${(current.x/pageCol)>=1? (pageCol-(current.x+1))*(100/contentCol) : 0}%, ${(current.y/pageRow) >= 1 ? (pageRow - (current.y+1)) * (focus.offsetHeight) : 0}px)`,
     };
 
     return (
-            <div className="matrix-row">
+            <div className="matrix-row" style={{height : `${props.height}`}}>
                 <FocusBox
                     width = {`${props.contentWidth}`}
                     height = {`${props.contentHeight}`}

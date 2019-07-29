@@ -24,7 +24,7 @@ const ListView = (props: IListViewProps) => {
       {
         props.type === VIEW_TYPE.SLIDE ?
         <SlideView list={list} title={props.title} index={props.index && props.index} contentWidth ={"18vw"} contentHeight = {"10vw"}/> :
-        <MatrixView list={list} column ={4} contentWidth = {"18vw"} contentHeight = {"10vw"} height = {"22vw"}/>
+        <MatrixView list={list} column ={4} contentWidth = {"20vw"} contentHeight = {"10vw"} height = {"22vw"}/>
       }
     </div>
   );
