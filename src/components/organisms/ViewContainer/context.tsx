@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useViewContainer } from '../../hooks/useViewContainer';
+import { useViewContainer } from '../../../hooks/useViewContainer';
 
 interface IViewContainerContextProps {
   children?: any;

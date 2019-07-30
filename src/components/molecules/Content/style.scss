@@ -16,13 +16,10 @@
 }
 
 .content {
-  width: 13vw;
-  height: 10vw;
+  
   .image-wrapper {
     position:relative;
     img {
-      width: 13vw;
-      height: 10vw;
     }
     .title {
 			position:absolute;
@@ -42,3 +39,6 @@
 		}
   }
 }
+// .content {
+//   border: 3px rgba(0,255,0,0) solid;
+// }

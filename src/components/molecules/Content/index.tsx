@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContent } from 'types';
+import { IContent } from '../../../types';
 import './style.scss';
 
 interface IContentProps {
@@ -19,8 +19,8 @@ const Content = (props: IContentProps) => {
   return (
     <div className = "content" style = {scaleStyle}>
       <div className = "image-wrapper">
-        <img src={image} alt={title} style = {{width : props.width, height: props.height}}/>
-        <p className="details" style = {{width: props.width, height: `${Math.floor(Number(props.height.replace(/[^0-9]/g,""))/2)}vw`}}>
+        <img src={image} alt={title} style = {{width : `${props.width}px`, height: `${props.height}px`}}/>
+        <p className="details" style = {{width: props.width, height: `${props.height}/2`}}>
           <span className="title">
             {title}
           </span>
