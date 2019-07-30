@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListView from '../../src/components/ListView';
+import ListView from '../../src/components/organisms/ListView';
 
 import {useFetch} from '../apis/fetchUrl';
 

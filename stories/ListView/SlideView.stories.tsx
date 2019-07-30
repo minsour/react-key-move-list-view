@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListView from '../../src/components/ListView';
+import ListView from '../../src/components/organisms/ListView';
 //import data from '../data';
 import {useFetch} from '../apis/fetchUrl';
 
@@ -10,7 +10,7 @@ const Demo = () => {
   const demo = useFetch(proxyUrl,targetUrl)
   console.log('datas',demo.datas);
   if(demo.loading) return <div />
-  return <ListView list={demo.datas} type="slide"/>
+  return <ListView list={demo.datas} type="slide" width={1000} height={150} widthNum={5}/>
 }
 storiesOf('ListView|SlideView', module)
 .add('default', () => <Demo/>

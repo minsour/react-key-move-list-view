@@ -4,20 +4,14 @@ body {
   font-family: sans-serif;
   overflow-x: hidden;
 }
-.slide-row {
-  margin: 10px;
-  // max-width: 13vw;
-  // margin: 0 auto;
-  // transform: translateX(-39vw);
-
-  .focus-box {
-    width: 100%;
-    height: 10vw;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    transition: transform 210ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
+.slide-view {
+  position: 'relative';
+}
+.focus-box {
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  transition: transform 210ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 
@@ -34,13 +28,11 @@ body {
 
 .slide-wrapper {
   display: flex;
-  // position: absolute;
+  position: absolute;
   transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   .content {
     padding: 5px;
-    // opacity: 0.5;
-    // transform: scale(1.2);
-    // position: absolute;
+    position: relative;
     box-shadow: none;
     z-index: 0;
     transition: opacity 300ms linear,transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
