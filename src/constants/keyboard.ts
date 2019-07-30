@@ -1,6 +1,6 @@
 const EVENT = {
-  keyDown: "keydown",
-  resize: "resize",
+  KEY_DOWN: "keydown",
+  RESIZE: "resize",
 };
 const LEFT_KEY = 37;
 const RIGHT_KEY = 39;

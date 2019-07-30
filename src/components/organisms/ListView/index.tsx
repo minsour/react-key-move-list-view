@@ -11,8 +11,7 @@ interface IListViewProps {
   widthNum: number;
   height?: number;
   heightNum?: number;
-  contentCol?: number;
-  contentRow?: number;
+  totalWidthNum?: number;
   index?: number;
   title?: string;
   focusedTitle?: string;
@@ -21,11 +20,10 @@ interface IListViewProps {
 
 const ListView = (props: IListViewProps) => {
   const list = useList(props.list);
-  
   return (
     props.type === VIEW_TYPE.SLIDE ?
     <SlideView list={list} title={props.title} index={props.index && props.index} width={props.width} height={props.height} widthNum={props.widthNum}/> :
-    <MatrixView list={list} title={props.title} index={props.index && props.index} width = {props.width} height={props.height} widthNum= {props.widthNum} heightNum = {props.heightNum} contentCol={props.contentCol} contentRow = {props.contentRow}/>
+    <MatrixView list={list} title={props.title} index={props.index && props.index} width = {props.width} height={props.height} widthNum= {props.widthNum} heightNum = {props.heightNum} totalWidthNum={props.totalWidthNum}/>
   );
 };
 

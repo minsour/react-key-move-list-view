@@ -15,19 +15,24 @@ interface ISlideViewProps {
   title?: string;
   focusedTitle?: string;
   theme?: "light" | "dark";
-  currentView?: number;
-  startPosition?: number;
 }
 
 const SlideView = (props: ISlideViewProps) => {
-  const slideView = useListView("slide", 3, props.index!);
+  const slideView = useListView(VIEW_TYPE.SLIDE, 3, props.index!);
   const contentWidth = props.width! / (props.widthNum! + 0.4) - 10;
-  const contentHeight = props.height! - 20;
+  const contentHeight = props.height!-20;
   const contentLength = props.list.length;
   const startPosition = contentWidth/6+1.5;
+  const translateX = slideView.currentContent.x<= contentLength-props.widthNum! && slideView.currentContent.x*(100/contentLength);
 
   const renderContents = () => (
-    props.list.map(content => <Content key={content._id} content={content} currentIndex = {slideView.currentContent.x} width = {`${contentWidth}`} height = {`${contentHeight}`}/>)
+    props.list.map(content => <Content 
+      key={content._id}
+      content={content} 
+      currentIndex = {slideView.currentContent.x} 
+      width = {`${contentWidth}`} 
+      height = {`${contentHeight}`}
+    />)
   );
 
   return (
@@ -35,9 +40,10 @@ const SlideView = (props: ISlideViewProps) => {
       className="slide-view"
       style={{
         position: 'relative', 
-        overflow: 'hidden', 
+        overflow: 'hidden',
+        paddingTop:'5px',
         width: `${props.width}px`, 
-        height: `calc(${props.height}px + 50px)`
+        height: `${props.height}px`
       }}
     >
       {!(props.index === void 0) &&
@@ -56,7 +62,13 @@ const SlideView = (props: ISlideViewProps) => {
         focus={(props.index === void 0) ? true : slideView.focus}
         action={(props.index === void 0) ? true : slideView.action }
       />
-      <div className="slide-wrapper" style={{marginLeft: `${startPosition}px`, transform: `translateX(-${slideView.currentContent.x<= contentLength-props.widthNum! && slideView.currentContent.x*(100/contentLength)}%`}}>
+      <div 
+        className="slide-wrapper" 
+        style={{
+            marginLeft: `${startPosition}px`, 
+            transform: `translateX(-${translateX}%)`,
+        }}
+      >
         {renderContents()}
       </div>
     </div>

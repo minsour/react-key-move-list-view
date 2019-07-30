@@ -1,13 +1,11 @@
-import { VIEW_TYPE } from './ListView';
-import { IContent } from './Content';
-import { ICurrent, IFocusBox, IViewState } from './Focus';
-import {IWindowDemention} from './Window';
+import { VIEW_TYPE, IViewState } from './listView';
+import { IContent,ICurrentContent} from './content';
+import {IWindowDimension} from './windowDimension';
 
 export {
   VIEW_TYPE,
   IContent,
-  ICurrent,
-  IFocusBox,
+  ICurrentContent,
   IViewState,
-  IWindowDemention,
+  IWindowDimension,
 };

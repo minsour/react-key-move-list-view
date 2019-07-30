@@ -3,12 +3,11 @@ import { EVENT, ENTER, ESC, UP_KEY, DOWN_KEY } from "../constants";
 import { ViewContainerContext } from "../components/organisms/ViewContainer/context";
 import { useCurrentContent } from ".";
 
-export const useListView = (type: string, width: number, index: number) => {
+export const useListView = (type: string, containerNum: number, index: number) => {
   const {currentView, setCurrentView} = useContext(ViewContainerContext);
   const [focus, setFocus] = useState<boolean>(false);
   const [action, setAction] = useState<boolean>(false);
   const isUndefined = (arg: Object) => (arg===void 0);
-  //const currentContent = useCurrentContent(20, 0, isUndefined(index) ? true : action);
   const currentContent = useCurrentContent(5,4,isUndefined(index)? true : action);
   const listView = {
     focus, action, currentContent, currentView
@@ -34,7 +33,7 @@ export const useListView = (type: string, width: number, index: number) => {
     }
     const down = () => {
       if(isUndefined(index)) return;
-      if(currentView! >= width - 1) return;
+      if(currentView! >= containerNum - 1) return;
       if(action===focus) return;
       setCurrentView!(currentView! + 1);
     }
@@ -58,9 +57,9 @@ export const useListView = (type: string, width: number, index: number) => {
 
     setFocus(isFocused);
 
-    window.addEventListener(EVENT.keyDown, onKeyDown);
+    window.addEventListener(EVENT.KEY_DOWN, onKeyDown);
     return () => {
-      window.removeEventListener(EVENT.keyDown, onKeyDown);
+      window.removeEventListener(EVENT.KEY_DOWN, onKeyDown);
     };
   }, [currentView, action, focus]);
 
