@@ -2,7 +2,7 @@ import * as React from 'react';
 import { VIEW_TYPE, IContent } from '../../../types';
 import MatrixView from './MatrixView/index';
 import SlideView from './SlideView/index';
-import { useList } from '../../../hooks/index';
+import { useList, useWindowDimensions } from '../../../hooks/index';
 
 interface IListViewProps {
   list: IContent[];
@@ -20,10 +20,14 @@ interface IListViewProps {
 
 const ListView = (props: IListViewProps) => {
   const list = useList(props.list);
+  const windowDimension = useWindowDimensions();
+  const width = (props.width===void 0) ? windowDimension.width : props.width;
+  const height = (props.height===void 0) ? (windowDimension.width/5.4-10)/6*5 : props.height;
+
   return (
     props.type === VIEW_TYPE.SLIDE ?
-    <SlideView list={list} title={props.title} index={props.index && props.index} width={props.width} height={props.height} widthNum={props.widthNum}/> :
-    <MatrixView list={list} title={props.title} index={props.index && props.index} width = {props.width} height={props.height} widthNum= {props.widthNum} heightNum = {props.heightNum} totalWidthNum={props.totalWidthNum}/>
+    <SlideView list={list} title={props.title} index={props.index && props.index} width={width} height={height} widthNum={props.widthNum}/> :
+    <MatrixView list={list} title={props.title} index={props.index && props.index} width = {width} height={height} widthNum= {props.widthNum} heightNum = {props.heightNum} totalWidthNum={props.totalWidthNum}/>
   );
 };
 
