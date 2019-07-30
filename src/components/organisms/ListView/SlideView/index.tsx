@@ -20,16 +20,11 @@ interface ISlideViewProps {
 }
 
 const SlideView = (props: ISlideViewProps) => {
-  const slideView = useListView(3, props.index!);
-  // const windowDimensions = useWindowDimensions();
+  const slideView = useListView("slide", 3, props.index!);
   const contentWidth = props.width! / (props.widthNum! + 0.4) - 10;
   const contentHeight = props.height! - 20;
   const contentLength = props.list.length;
   const startPosition = contentWidth/6+1.5;
-
-  // const moveSlideWrapper = {
-  //   transform: `translateX(-${slideView.currentContent.x< contentLength-props.widthNum!+1 && slideView.currentContent.x*(100/contentLength)}%)`
-  // };
 
   const renderContents = () => (
     props.list.map(content => <Content key={content._id} content={content} currentIndex = {slideView.currentContent.x} width = {`${contentWidth}`} height = {`${contentHeight}`}/>)

@@ -9,8 +9,8 @@ const Demo = () => {
   let targetUrl = "https://yts.am/api/v2/list_movies.json?sort_by=download_count";
   const demo = useFetch(proxyUrl,targetUrl)
   console.log('datas',demo.datas);
-  if(demo.loading) return <div />
-  return <ListView list={demo.datas} type="slide" width={1000} height={150} widthNum={5}/>
+  if(demo.loading) return <div>Loading...</div>
+  return <ListView list={demo.datas} type="slide" width={800} height={150} widthNum={5}/>
 }
 storiesOf('ListView|SlideView', module)
 .add('default', () => <Demo/>

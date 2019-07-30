@@ -3,11 +3,15 @@ module.exports = ({ config }) => {
     test: /\.(ts|tsx)$/,
     use: [
       {
-        loader: require.resolve('awesome-typescript-loader'),
+        loader: require.resolve('awesome-typescript-loader')
       },
       {
         loader: require.resolve('react-docgen-typescript-loader'),
       },
+      {
+        loader: require.resolve('@storybook/addon-storysource/loader'),
+        options:{parser:'typescript'},
+      }
     ],
   });
   config.module.rules.push({

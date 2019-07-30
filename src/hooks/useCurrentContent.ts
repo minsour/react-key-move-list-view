@@ -26,6 +26,7 @@ export const useCurrentContent = (width: number, height: number, action: boolean
     }
     
     const onKeyDown = (event: KeyboardEvent) => {
+      event.preventDefault()
       switch (event.keyCode) {
         case LEFT_KEY:
           left();

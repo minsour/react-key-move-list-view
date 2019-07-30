@@ -20,7 +20,7 @@ const Content = (props: IContentProps) => {
     <div className = "content" style = {scaleStyle}>
       <div className = "image-wrapper">
         <img src={image} alt={title} style = {{width : `${props.width}px`, height: `${props.height}px`}}/>
-        <p className="details" style = {{width: props.width, height: `${props.height}/2`}}>
+        <p className="details" style = {{width: `${props.width}px`, height: `${Number(props.height)/3}px`}}>
           <span className="title">
             {title}
           </span>

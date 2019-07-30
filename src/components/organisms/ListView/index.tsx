@@ -8,9 +8,11 @@ interface IListViewProps {
   list: IContent[];
   type: "slide" | "matrix";
   width?: number;
-  widthNum?: number;
+  widthNum: number;
   height?: number;
   heightNum?: number;
+  contentCol?: number;
+  contentRow?: number;
   index?: number;
   title?: string;
   focusedTitle?: string;
@@ -23,7 +25,7 @@ const ListView = (props: IListViewProps) => {
   return (
     props.type === VIEW_TYPE.SLIDE ?
     <SlideView list={list} title={props.title} index={props.index && props.index} width={props.width} height={props.height} widthNum={props.widthNum}/> :
-    <MatrixView list={list} heightNum={4} />
+    <MatrixView list={list} title={props.title} index={props.index && props.index} width = {props.width} height={props.height} widthNum= {props.widthNum} heightNum = {props.heightNum} contentCol={props.contentCol} contentRow = {props.contentRow}/>
   );
 };
 

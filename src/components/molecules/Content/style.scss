@@ -1,44 +1,33 @@
 .details, .title {
   padding:0;
   margin:0;
-  line-height:1;
+  line-height:2;
 } 
 
 .details {
   position: absolute;
   bottom: 5px;
   background: rgba(0, 0, 0, 0.5);
-  width:13vw;
-  height:5vw;
-}
-.title {
-  margin:0 0 5px 0;
 }
 
 .content {
-  
   .image-wrapper {
     position:relative;
-    img {
-    }
     .title {
 			position:absolute;
       z-index:1;
       top: 5px;
 			left:5px;
-			font-size:18px;
+			font-size:15px;
 			font-weight:bold;
 			color:#fff;
 		} 
 		.description {
 			position:absolute;
-			font-size:11px;
+			font-size:5px;
 			color:#fff;
 			left:5px;
 			top:25px;
 		}
   }
 }
-// .content {
-//   border: 3px rgba(0,255,0,0) solid;
-// }

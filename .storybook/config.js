@@ -1,4 +1,5 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 // import { themes } from '@storybook/theming';
 // import { withBackgrounds } from '@storybook/addon-backgrounds/register';
 
@@ -9,16 +10,16 @@ const req = require.context(
   /\.stories\.(ts|tsx)$/,
 );
 
-// addParameters({
-//   options: {
-//     theme: themes.light,
-//   },
-// });
-
 function loadStories() {
   req.keys().forEach(filename => {
     req(filename)
   });
 };
+
+addDecorator(
+  withInfo({
+    inline:true,
+  })
+);
 
 configure(loadStories, module);
