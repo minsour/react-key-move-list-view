@@ -9,6 +9,7 @@ import {
 } from './keyboard';
 import { THEME, THEME_STRING } from './color';
 import { DEFAULT_PROPS } from './props';
+import { PROXY_URL, GET_MOVIE_URL } from './api';
 
 export {
   EVENT,
@@ -20,5 +21,7 @@ export {
   ESC,
   THEME,
   THEME_STRING,
-  DEFAULT_PROPS
+  DEFAULT_PROPS,
+  PROXY_URL,
+  GET_MOVIE_URL
 }
