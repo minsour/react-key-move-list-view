@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ICurrentContent, VIEW_TYPE } from '../../../types';
 import { THEME_STRING, THEME } from '../../../constants';
+import './style.scss';
 
 interface IFocusBoxProps { 
   widthNum?: number;
