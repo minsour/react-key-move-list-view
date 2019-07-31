@@ -1,5 +1,6 @@
 .slide-view {
   position: 'relative';
+  will-change: transform;
 }
 .focus-box {
   padding: 5px;

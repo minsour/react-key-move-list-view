@@ -1,24 +1,27 @@
-  .matrix-row {
-    .focus-box {
-      padding: 5px;
-      position: absolute;
-      z-index: 1;
-      transition: transform 210ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    }
-  }
-  
-  .matrix-wrapper {
+.matrix-view {
+  will-change: transform;
+}
+.matrix-row {
+  .focus-box {
+    padding: 5px;
     position: absolute;
-    transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    .content {
-      padding:5px;
-      font-size: 0;
-      // div 중첩 시 여백이 발생하는데 font-size를 0으로 하면 여백이 사라진다.
-      transform: scale(0.9);
-      box-shadow: none;
-      transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    }
-    .row {
-      display: flex;
-    }
+    z-index: 1;
+    transition: transform 210ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
+}
+
+.matrix-wrapper {
+  position: absolute;
+  transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  .content {
+    padding:5px;
+    font-size: 0;
+    // div 중첩 시 여백이 발생하는데 font-size를 0으로 하면 여백이 사라진다.
+    transform: scale(0.9);
+    box-shadow: none;
+    transition: transform 220ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  .row {
+    display: flex;
+  }
+}
