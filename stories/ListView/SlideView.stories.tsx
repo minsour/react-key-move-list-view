@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListView from '../../src/components/organisms/ListView';
+import {ListView} from '../../src/components/organisms/ListView';
 import {useFetch} from '../../apis/useFetch';
 import ShowDocs from '../utils/ShowDocs';
 import { PROXY_URL, GET_MOVIE_URL } from '../../src/constants';

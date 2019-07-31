@@ -17,7 +17,7 @@ interface IListViewProps {
   theme?: "light" | "dark";
 }
 
-const ListView = (props: IListViewProps) => {
+export const ListView = (props: IListViewProps) => {
   const list = useList(props.list);
   const windowDimension = useWindowDimensions();
   const width = (props.width===void 0) ? windowDimension.width : props.width;
@@ -29,5 +29,3 @@ const ListView = (props: IListViewProps) => {
     <MatrixView list={list} title={props.title} index={props.index && props.index} width = {width} height={height} widthNum= {props.widthNum} heightNum = {props.heightNum} totalWidthNum={props.totalWidthNum} theme = {props.theme}/>
   );
 };
-
-export default ListView;

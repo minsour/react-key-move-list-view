@@ -5,7 +5,7 @@ interface IViewContainerProps {
   render: () => JSX.Element;
 }
 
-const ViewContainer = (props: IViewContainerProps) => {
+export const ViewContainer = (props: IViewContainerProps) => {
   return (
     <ViewContainerProvider>
       <div>
@@ -14,5 +14,3 @@ const ViewContainer = (props: IViewContainerProps) => {
     </ViewContainerProvider>
   );
 };
-
-export default ViewContainer;

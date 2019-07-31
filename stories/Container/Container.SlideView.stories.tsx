@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import ViewContainer from '../../src/components/organisms/ViewContainer';
-import ListView from '../../src/components/organisms/ListView';
+import {ViewContainer} from '../../src/components/organisms/ViewContainer';
+import {ListView} from '../../src/components/organisms/ListView';
 import {useFetch} from '../../apis/useFetch';
 import { PROXY_URL, GET_MOVIE_URL } from '../../src/constants';
 import ShowDocs from '../utils/ShowDocs';
