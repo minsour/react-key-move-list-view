@@ -1,7 +1,7 @@
 .details, .title {
   padding:0;
   margin:0;
-  line-height:2;
+  line-height:1;
 } 
 
 .details {
@@ -18,10 +18,10 @@
       z-index:1;
       top: 5px;
 			left:5px;
-			font-size:15px;
+			font-size:17px;
 			font-weight:bold;
 			color:#fff;
-		} 
+		}
 		.description {
 			position:absolute;
 			font-size:5px;

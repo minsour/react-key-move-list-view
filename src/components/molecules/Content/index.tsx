@@ -10,7 +10,7 @@ interface IContentProps {
 }
 
 const Content = (props: IContentProps) => {
-  const {index, image, title, description} = props.content;
+  const {index, image, title} = props.content;
   const contentStyle = {
     'width' : `${props.width}`,
     'height' : `${props.height}`,
@@ -24,9 +24,9 @@ const Content = (props: IContentProps) => {
           <span className="title">
             {title}
           </span>
-          <span className="description">
+          {/* <span className="description">
             {description}
-          </span>
+          </span> */}
         </p>
       </div>
     </div>
