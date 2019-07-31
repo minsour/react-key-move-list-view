@@ -3,12 +3,12 @@ import { EVENT, ENTER, ESC, UP_KEY, DOWN_KEY } from "../constants";
 import { ViewContainerContext } from "../components/organisms/ViewContainer/context";
 import { useCurrentContent } from ".";
 
-export const useListView = (type: string, containerNum: number, index: number) => {
+export const useListView = (type: string, containerNum: number, index: number, totalWidthNum: number, totalHeightNum : number) => {
   const {currentView, setCurrentView} = useContext(ViewContainerContext);
   const [focus, setFocus] = useState<boolean>(false);
   const [action, setAction] = useState<boolean>(false);
   const isUndefined = (arg: Object) => (arg===void 0);
-  const currentContent = useCurrentContent(5,4,isUndefined(index)? true : action);
+  const currentContent = useCurrentContent(totalWidthNum,totalHeightNum,isUndefined(index)? true : action) 
   const listView = {
     focus, action, currentContent, currentView
   };

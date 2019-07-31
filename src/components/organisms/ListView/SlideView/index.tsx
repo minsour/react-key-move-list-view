@@ -19,12 +19,12 @@ interface ISlideViewProps {
 }
 
 const SlideView = (props: ISlideViewProps) => {
-  const slideView = useListView(VIEW_TYPE.SLIDE, 3, props.index!);
   const widthNum = (props.widthNum===void 0) ? DEFAULT_PROPS.WIDTH_NUM : props.widthNum;
   const contentWidth = props.width! / (widthNum + 0.4) - 10;
   const contentHeight = props.height!-20;
   const contentLength = props.list.length;
   const startPosition = contentWidth/6+1.5;
+  const slideView = useListView(VIEW_TYPE.SLIDE, 3, props.index!, contentLength, 0);
   const translateX = slideView.currentContent.x<= contentLength-widthNum && slideView.currentContent.x*(100/contentLength);
 
   const renderContents = () => (
@@ -34,6 +34,7 @@ const SlideView = (props: ISlideViewProps) => {
       currentIndex = {slideView.currentContent.x} 
       width = {`${contentWidth}`} 
       height = {`${contentHeight}`}
+      widthNum = {`${widthNum}`}
     />)
   );
 
@@ -63,7 +64,7 @@ const SlideView = (props: ISlideViewProps) => {
         type={VIEW_TYPE.SLIDE}
         focus={(props.index === void 0) ? true : slideView.focus}
         action={(props.index === void 0) ? true : slideView.action }
-        theme="dark"
+        theme={props.theme}
       />
       <div 
         className="slide-wrapper" 
