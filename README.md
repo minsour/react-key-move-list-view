@@ -1,5 +1,4 @@
-<h1 align = "center">React Keyboard Move List</center>
-
+<h1 align = "center">React Keyboard Move List</center></h1>
 > Carousel, Matrix Component operated by Keyboard Input (←, ↑, →, ↓)
 
 ## 💽 Intro
@@ -7,13 +6,13 @@
 
 ### SlideView
 
-이미지 삽입 ![slideview]()
+이미지 삽입 ![slideview](https://github.com/DevSoopark/react-keyboard-move-list/raw/master/SlideView-Demo.gif)
 
 ### MatrixView
 
-이미지 삽입 ![matrixview]()
+이미지 삽입 ![matrixview](https://github.com/DevSoopark/react-keyboard-move-list/raw/master/MatrixView-Demo.gif)
 
-[Demo in Storybook](storybook url 입력)
+[Demo in Storybook](https://DevSoopark.github.io/react-keyboard-move-list/)
 
 [![Edit React Keyboard Move List](https://codesandbox.io/static/img/play-codesandbox.svg)]
 
