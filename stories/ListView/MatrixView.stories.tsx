@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import ListView from '../../src/components/organisms/ListView';
-
 import {useFetch} from '../apis/fetchUrl';
+import ShowDocs from '../utils/ShowDocs';
 
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const targetUrl = "https://yts.am/api/v2/list_movies.json?sort_by=download_count";
+const targetUrl = "https://yts.am/api/v2/list_movies.json?genre=mystery&sort_by=download_count";
 
 interface IMatrixViewDemoProps {
   width?:number,
@@ -13,6 +13,7 @@ interface IMatrixViewDemoProps {
   widthNum?:number,
   heightNum?:number,
   totalWidthNum?:number
+  title?:string;
   theme?:"light"|"dark",
 };
 
@@ -27,13 +28,17 @@ const MatrixViewDemo = (props:IMatrixViewDemoProps) => {
              height={props.height}
              widthNum={props.widthNum} 
              heightNum={props.heightNum} 
-             totalWidthNum={props.totalWidthNum} 
+             totalWidthNum={props.totalWidthNum}
+             title={props.title} 
              theme={props.theme}
         />
 }
 
 
 storiesOf('ListView|MatrixView', module)
+  .add('docs', () => 
+    <ShowDocs md={require('../docs/MatrixView.md')} />
+  )
   .add('default', () => {
     return <MatrixViewDemo/>;
   })
@@ -48,4 +53,7 @@ storiesOf('ListView|MatrixView', module)
   })
   .add('custom theme of focusbox', ()=> {
     return <MatrixViewDemo theme ={"dark"}/>;
+  })
+  .add('set title of matrixview', () => {
+    return <MatrixViewDemo title ={"Mystery"}/>;
   })

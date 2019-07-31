@@ -18,7 +18,6 @@ const Content = (props: IContentProps) => {
   const [indexX, indexY] = [index%Number(totalWidthNum),Math.floor(index/Number(totalWidthNum))];
   const [currentX, currentY] = [props.currentIndex%Number(totalWidthNum), Math.floor(props.currentIndex/Number(totalWidthNum))]
   const contentStyle = {
-    //'visibility' : `visible`,
     'width' : `${props.width}`,
     'height' : `${props.height}`,
     'visibility': `${
@@ -28,10 +27,6 @@ const Content = (props: IContentProps) => {
              || (currentY  + 2*Number(props.heightNum) < indexY || currentY - 2*Number(props.heightNum) > indexY)) ? "hidden" : "visible")
       }`,
     'transform' : `scale(${props.currentIndex == index ? 1 : 0.9})`,
-    //'visibility': `${(props.currentIndex-props.widthNum > index || props.currentIndex+props.widthNum < index) $$ "hidden"}`,
-    //'display' : `${(index + 5 < props.currentIndex || index-5 > props.currentIndex) ? "none" : "inline" }`,
-    //'padding' : `${props.currentIndex == index && 0}px`
-    //'display' : `${(props.currentIndex > index + 1) && (props.currentIndex < index + 5) ? "none" : "" }`
   }as React.CSSProperties;
   return (
     <div className = "content" style = {contentStyle}>
@@ -41,9 +36,6 @@ const Content = (props: IContentProps) => {
           <span className="title">
             {title}
           </span>
-          {/* <span className="description">
-            {description}
-          </span> */}
         </p>
       </div>
     </div>

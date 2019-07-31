@@ -1,6 +1,5 @@
 import { configure, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-
+import {withInfo} from '@storybook/addon-info';
 const req = require.context(
   '../stories',
   true,
@@ -12,7 +11,6 @@ function loadStories() {
     req(filename)
   });
 };
-
 addDecorator(
   withInfo({ header:null
   })

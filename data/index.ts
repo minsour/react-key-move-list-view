@@ -5,7 +5,7 @@ const data = [
     image:
       "https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property01.jpg",
     title: "Singer",
-    description: "914 Argyle Road 914 Argyle Road 914 Argyle Road "
+    description: "914 Argyle Road 914 Argyle Road"
   },
   {
     _id: "593e9297ec4cca9c56bf61af",

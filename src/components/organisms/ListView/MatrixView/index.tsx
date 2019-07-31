@@ -58,7 +58,7 @@ const MatrixView = (props: IMatrixViewProps) => {
                 height: `${props.height}px`
             }}
         >
-            {!(props.index === void 0) &&
+            {!(props.title === void 0) &&
             <ViewTitle
               action = {matrixView.action}
               focus = {matrixView.focus}

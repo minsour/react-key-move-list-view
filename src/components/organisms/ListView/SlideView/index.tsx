@@ -50,7 +50,7 @@ const SlideView = (props: ISlideViewProps) => {
         height: `${props.height}px`
       }}
     >
-      {!(props.index === void 0) &&
+      {!(props.title === void 0) &&
       <ViewTitle
         action={slideView.action}
         focus={slideView.focus}

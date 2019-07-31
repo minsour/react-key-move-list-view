@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import ViewContainer from '../../src/components/organisms/ViewContainer';
 import ListView from '../../src/components/organisms/ListView';
 import {useFetch} from '../apis/fetchUrl';
-//import ShowDocs from '../utils/ShowDocs';
 
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const targetUrl = "https://yts.am/api/v2/list_movies.json?sort_by=download_count";
