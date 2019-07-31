@@ -18,5 +18,13 @@
 | totalWidthNum | number              | -        | -       |             |
 | index         | number              | -        | -       |             |
 | title         | string              | -        | -       |             |
-| focusedTitle  | string              | -        | -       |             |
 | theme         | "light"\|"dark"     | -        | -       |             |
+
+### IContent Type
+|**_property_**|**_propType_**|
+|:---------:|:--------:|
+| _id          | string          |
+| index          | number |
+| image         | string              |
+| title      | string              |
+| description      | string              |
