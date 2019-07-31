@@ -14,8 +14,7 @@ function loadStories() {
 };
 
 addDecorator(
-  withInfo({
-    inline:true, header:null
+  withInfo({ header:null
   })
 );
 

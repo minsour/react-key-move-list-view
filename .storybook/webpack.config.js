@@ -22,6 +22,12 @@ module.exports = ({ config }) => {
       require.resolve('sass-loader'),
     ],
   });
+  config.module.rules.push({
+    test: /\.md?$/,
+    use: [
+      require.resolve('markdown-loader')
+    ],
+  });
   config.resolve.extensions.push('.ts', '.tsx');
   return config;
 };
