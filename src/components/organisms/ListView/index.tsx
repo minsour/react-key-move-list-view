@@ -14,7 +14,6 @@ interface IListViewProps {
   totalWidthNum?: number;
   index?: number;
   title?: string;
-  focusedTitle?: string;
   theme?: "light" | "dark";
 }
 

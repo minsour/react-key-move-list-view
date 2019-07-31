@@ -16,7 +16,6 @@ interface IMatrixViewProps {
     totalWidthNum?: number;
     index?: number;
     title?: string;
-    focusedTitle?: string;
     theme?: "light" | "dark";
 };
 

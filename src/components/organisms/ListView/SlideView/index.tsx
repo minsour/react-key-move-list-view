@@ -14,7 +14,6 @@ interface ISlideViewProps {
   height?: number;
   index?: number;
   title?: string;
-  focusedTitle?: string;
   theme?: "light" | "dark";
 }
 
