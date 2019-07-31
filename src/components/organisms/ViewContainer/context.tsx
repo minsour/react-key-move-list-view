@@ -5,18 +5,20 @@ interface IViewContainerContextProps {
   children?: any;
 }
 
-interface IContainerContext {
+export interface IContainerContext {
   currentView?: number;
   setCurrentView?: React.Dispatch<React.SetStateAction<number>>;
+  containerSize?: number;
+  setContainerSize?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const ViewContainerContext = React.createContext<IContainerContext>({});
 
 const ViewContainerProvider = (props: IViewContainerContextProps) => {
-  const {currentView, setCurrentView} = useViewContainer();
+  const viewContainer = useViewContainer();
 
   return (
-    <ViewContainerContext.Provider value={{currentView, setCurrentView}}>
+    <ViewContainerContext.Provider value={viewContainer}>
       {props.children}
     </ViewContainerContext.Provider>
   );
