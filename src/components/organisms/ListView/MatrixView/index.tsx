@@ -63,6 +63,7 @@ const MatrixView = (props: IMatrixViewProps) => {
               action = {matrixView.action}
               focus = {matrixView.focus}
               title={props.title}
+              theme={props.theme}
             />}
             <FocusBox
                     width = {`${contentWidth}`}

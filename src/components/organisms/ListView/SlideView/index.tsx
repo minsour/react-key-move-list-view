@@ -21,7 +21,7 @@ interface ISlideViewProps {
 const SlideView = (props: ISlideViewProps) => {
   const widthNum = (props.widthNum===void 0) ? DEFAULT_PROPS.WIDTH_NUM : props.widthNum;
   const contentWidth = props.width! / (widthNum + 0.4) - 10;
-  const contentHeight = props.height!-20;
+  const contentHeight = props.height!-60;
   const startPosition = contentWidth/6+1.5;
   const contentLength = props.list.length;
   const slideView = useListView(VIEW_TYPE.SLIDE, props.index!, contentLength, 0);
@@ -45,6 +45,7 @@ const SlideView = (props: ISlideViewProps) => {
         position: 'relative', 
         overflow: 'hidden',
         paddingTop:'5px',
+        paddingBottom: '5px',
         width: `${props.width}px`, 
         height: `${props.height}px`
       }}
@@ -54,6 +55,7 @@ const SlideView = (props: ISlideViewProps) => {
         action={slideView.action}
         focus={slideView.focus}
         title={props.title}
+        theme={props.theme}
       />}
       <FocusBox
         width = {contentWidth}
@@ -71,6 +73,7 @@ const SlideView = (props: ISlideViewProps) => {
         style={{
             marginLeft: `${startPosition}px`, 
             transform: `translateX(-${translateX}%)`,
+            height: `${contentHeight}px`
         }}
       >
         {renderContents()}
