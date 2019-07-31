@@ -47,9 +47,9 @@ Carousel, Matrix Component operated by Keyboard Input (←, ↑, →, ↓)
 
 
 ```sh
-yarn add @___/react-keyboard-move-list
+npm i react-key-move-list-view
 # or
-npm install ———save @___/react-keyboard-move-list
+yarn add react-key-move-list-view
 ```
 
 
@@ -61,8 +61,7 @@ npm install ———save @___/react-keyboard-move-list
 
 ```javascript
 import * as React from 'react';
-import data from '../../data';
-import { ListView } from '@___/react-key-move-list-view';
+import { ListView } from 'react-key-move-list-view';
 
 const KeyboardListViewExample = () => {
   return (
