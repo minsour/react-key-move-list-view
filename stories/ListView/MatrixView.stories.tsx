@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import ListView from '../../src/components/organisms/ListView';
-import {useFetch} from '../apis/fetchUrl';
+import {useFetch} from '../../apis/useFetch';
 import ShowDocs from '../utils/ShowDocs';
-
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const targetUrl = "https://yts.am/api/v2/list_movies.json?genre=mystery&sort_by=download_count";
+import { PROXY_URL, GET_MOVIE_URL } from '../../src/constants';
 
 interface IMatrixViewDemoProps {
   width?:number,
@@ -19,7 +17,7 @@ interface IMatrixViewDemoProps {
 
 
 const MatrixViewDemo = (props:IMatrixViewDemoProps) => {
-  const list = useFetch(proxyUrl,targetUrl)
+  const list = useFetch(PROXY_URL, GET_MOVIE_URL)
   if(list.loading) return <div>Loading...</div>
   return <ListView 
              list={list.datas} 

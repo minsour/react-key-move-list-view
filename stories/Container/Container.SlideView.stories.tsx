@@ -2,10 +2,8 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import ViewContainer from '../../src/components/organisms/ViewContainer';
 import ListView from '../../src/components/organisms/ListView';
-import {useFetch} from '../apis/fetchUrl';
-
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const targetUrl = "https://yts.am/api/v2/list_movies.json?sort_by=download_count";
+import {useFetch} from '../../apis/useFetch';
+import { PROXY_URL, GET_MOVIE_URL } from '../../src/constants';
 
 interface IContainerSlideViewDemoProps {
   width?:number,
@@ -16,7 +14,7 @@ interface IContainerSlideViewDemoProps {
 };
 
 const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
-  const list = useFetch(proxyUrl, targetUrl)
+  const list = useFetch(PROXY_URL, GET_MOVIE_URL)
   const renderListViews = () => (
     <React.Fragment>
       <ListView
