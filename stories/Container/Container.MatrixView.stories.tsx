@@ -51,11 +51,11 @@ const MatrixViewDemo = (props:IMatrixViewDemoProps) => {
 
 storiesOf('Container|MatrixView', module)
   .add('custom component shape', () => {
-    return <MatrixViewDemo width = {850} height = {280}/>;
+    return <MatrixViewDemo width = {850} height = {350}/>;
   })
   .add('number of contents on page', () => {
-    return <MatrixViewDemo width = {850} height = {280} widthNum = {5}/>;
+    return <MatrixViewDemo width = {850} height = {350} widthNum = {5}/>;
   })
   .add('custom theme of focusbox', ()=> {
-    return <MatrixViewDemo width = {850} height = {280} widthNum = {5} theme ={"dark"}/>;
+    return <MatrixViewDemo width = {850} height = {350} widthNum = {5} theme ={"dark"}/>;
   })
