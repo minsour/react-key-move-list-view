@@ -1,0 +1,5 @@
+export const DEFAULT_PROPS = {
+  WIDTH_NUM: 4,
+  HEIGHT_NUM: 2,
+  TOTAL_WIDTH_NUM: 5,
+}
