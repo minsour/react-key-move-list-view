@@ -37,7 +37,7 @@ const MatrixView = (props: IMatrixViewProps) => {
         const rows = props.list.slice(index-totalWidthNum!+1, index+1);
         return (
             <div className = "row">
-                {rows.map((row) => <Content key = {row._id} content = {row} currentIndex = {matrixView.currentContent.x + matrixView.currentContent.y * totalWidthNum!} width = {`${contentWidth}`} height = {`${contentHeight}`} widthNum = {`${widthNum}`} totalWidthNum = {`${totalWidthNum}`}/>)}
+                {rows.map((row) => <Content key = {row._id} content = {row} currentIndex = {matrixView.currentContent.x + matrixView.currentContent.y * totalWidthNum!} width = {`${contentWidth}`} height = {`${contentHeight}`} widthNum = {`${widthNum}`} heightNum = {`${heightNum}`} totalWidthNum = {`${totalWidthNum}`}/>)}
             </div>
         );
     };
