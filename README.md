@@ -1,5 +1,5 @@
-<h1 align = "center"> React Keyboard Move List</center></h1>
-> Carousel, Matrix Component operated by Keyboard Input (←, ↑, →, ↓)
+<h1> React Keyboard Move List</h1>
+Carousel, Matrix Component operated by Keyboard Input (←, ↑, →, ↓)
 
 
 
@@ -7,11 +7,18 @@
 
 ### SlideView
 
- ![slideview](https://github.com/DevSoopark/react-keyboard-move-list/raw/master/SlideView-Demo.gif)
+ ![slideview](https://github.com/DevSoopark/react-key-move-list-view/raw/master/SlideView-Demo.gif)
 
 ### MatrixView
 
- ![matrixview](https://github.com/DevSoopark/react-keyboard-move-list/raw/master/MatrixView-Demo.gif)
+ ![matrixview](https://github.com/DevSoopark/react-key-move-list-view/raw/master/MatrixView-Demo.gif)
+
+### SlideView - Container
+![slideview-container](https://github.com/DevSoopark/react-key-move-list-view/raw/master/SlideView-Container-Demo.gif)
+
+### MatrixView - Container
+![matrixview-container](https://github.com/DevSoopark/react-key-move-list-view/raw/master/MatrixView-Container-Demo.gif)
+
 
 [Demo in Storybook](https://DevSoopark.github.io/react-key-move-list-view/)
 
@@ -55,7 +62,7 @@ npm install ———save @___/react-keyboard-move-list
 ```javascript
 import * as React from 'react';
 import data from '../../data';
-import { ListView } from '@___/react-keyboard-move-list';
+import { ListView } from '@___/react-key-move-list-view';
 
 const KeyboardListViewExample = () => {
   return (
@@ -76,7 +83,7 @@ You can find more Examples and [Demo in Storybook](https://DevSoopark.github.io/
 This component is managed by a `storybook` which is combined with `develop environment` and `documentation`. If you want to develop in local environment, clone project and develop through a storybook
 
 ```sh
-git clone https://github.com/DevSoopark/react-keyboard-move-list.git
+git clone https://github.com/DevSoopark/react-key-move-list-view.git
 yarn
 yarn run storybook
 ```
