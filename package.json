@@ -1,7 +1,7 @@
 {
-  "name": "react-keyboard-move-list",
+  "name": "react-key-move-list-view",
   "version": "1.0.0",
-  "description": "",
+  "description": "React KeyMoveListView(Carousel, Matrix) Library https://DevSoopark.github.io/react-keyboard-move-list/",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,15 +9,16 @@
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react", "javascript", "typescript", "keyboard", "move", "list", "view", "slide", "matrix"],
+  "contributors": [
+    "DevSoopark",
+    "Baek2back"
+  ],
   "license": "ISC",
   "dependencies": {
     "@types/react": "^16.8.23",
-    "@types/styled-components": "^4.1.18",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "styled-components": "^4.3.2"
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
