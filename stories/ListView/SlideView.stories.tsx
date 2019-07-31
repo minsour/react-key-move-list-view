@@ -39,9 +39,6 @@ storiesOf('ListView|SlideView', module)
   .add('custom number of contents on page', () => {
     return <SlideViewDemo widthNum = {3}/>;
   })
-  .add('custom number of contents by row', () => {
-    return <SlideViewDemo totalWidthNum = {10}/>;
-  })
   .add('custom theme of focusbox', ()=> {
     return <SlideViewDemo theme ={"dark"}/>;
   })
