@@ -1,20 +1,72 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import ListView from '../../src/components/organisms/ListView';
 import ViewContainer from '../../src/components/organisms/ViewContainer';
-import data from '../../data';
-  
-storiesOf('Container|SlideView', module)
-.add('default', () => {
+import ListView from '../../src/components/organisms/ListView';
+import {useFetch} from '../apis/fetchUrl';
+//import ShowDocs from '../utils/ShowDocs';
+
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const targetUrl = "https://yts.am/api/v2/list_movies.json?sort_by=download_count";
+
+interface IContainerSlideViewDemoProps {
+  width?:number,
+  height?:number,
+  widthNum?:number,
+  totalWidthNum?:number
+  theme?:"light"|"dark"
+};
+
+const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
+  const list = useFetch(proxyUrl, targetUrl)
   const renderListViews = () => (
     <React.Fragment>
-      <ListView index={0} title="인기 영화" list={data} type="slide" width={1000} widthNum={5} height={170}/>
-      <ListView index={1} title="인기 드라마" list={data} type="slide" width = {1000} widthNum = {5} height = {170}/>
-      <ListView index={2} title="인기 예능" list={data} type="slide" width = {1000} widthNum = {5} height = {170}/>
+      <ListView
+        index={0}
+        title="인기 영화"
+        list={list.datas}
+        type="slide"
+        width={props.width}
+        height={props.height}
+        widthNum={props.widthNum}
+        totalWidthNum={props.totalWidthNum}
+        theme = {props.theme}
+      />
+      <ListView
+        index={1}
+        title="인기 드라마"
+        list={list.datas}
+        type="slide"
+        width={props.width}
+        height={props.height}
+        widthNum={props.widthNum}
+        totalWidthNum={props.totalWidthNum}
+        theme = {props.theme}
+      />
+      <ListView
+        index={2}
+        title="인기 예능"
+        list={list.datas}
+        type="slide"
+        width={props.width}
+        height={props.height}
+        widthNum={props.widthNum}
+        totalWidthNum={props.totalWidthNum}
+        theme = {props.theme}
+      />
     </React.Fragment>
   );
 
-  return (
-    <ViewContainer render={renderListViews}/>
-  );
-});
+  if(list.loading) return <div>Loading...</div>
+  return <ViewContainer render={renderListViews}/>;
+}
+
+storiesOf('Container|SlideView', module)
+  .add('custom component shape', () => {
+    return <ContainerSlideViewDemo width = {700} height = {180}/>;
+  })
+  .add('number of contents on page', () => {
+    return <ContainerSlideViewDemo width = {700} height = {180} widthNum = {3}/>;
+  })
+  .add('custom theme of focusbox', ()=> {
+    return <ContainerSlideViewDemo width = {700} height = {180} theme ={"dark"}/>;
+  })
