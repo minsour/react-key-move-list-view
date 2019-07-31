@@ -5,6 +5,7 @@ import './style.scss'
 import FocusBox from '../../../molecules/FocusBox';
 import { useListView } from '../../../../hooks';
 import ViewTitle from '../../../molecules/ViewTitle';
+import { DEFAULT_PROPS } from '../../../../constants';
 
 interface ISlideViewProps { 
   list: IContent[];
@@ -19,11 +20,12 @@ interface ISlideViewProps {
 
 const SlideView = (props: ISlideViewProps) => {
   const slideView = useListView(VIEW_TYPE.SLIDE, 3, props.index!);
-  const contentWidth = props.width! / (props.widthNum! + 0.4) - 10;
+  const widthNum = (props.widthNum===void 0) ? DEFAULT_PROPS.WIDTH_NUM : props.widthNum;
+  const contentWidth = props.width! / (widthNum + 0.4) - 10;
   const contentHeight = props.height!-20;
   const contentLength = props.list.length;
   const startPosition = contentWidth/6+1.5;
-  const translateX = slideView.currentContent.x<= contentLength-props.widthNum! && slideView.currentContent.x*(100/contentLength);
+  const translateX = slideView.currentContent.x<= contentLength-widthNum && slideView.currentContent.x*(100/contentLength);
 
   const renderContents = () => (
     props.list.map(content => <Content 
@@ -55,12 +57,13 @@ const SlideView = (props: ISlideViewProps) => {
       <FocusBox
         width = {contentWidth}
         height = {contentHeight}
-        pageCol={props.widthNum}
+        widthNum={widthNum}
         contentLength={contentLength}
         current={slideView.currentContent}
         type={VIEW_TYPE.SLIDE}
         focus={(props.index === void 0) ? true : slideView.focus}
         action={(props.index === void 0) ? true : slideView.action }
+        theme="dark"
       />
       <div 
         className="slide-wrapper" 

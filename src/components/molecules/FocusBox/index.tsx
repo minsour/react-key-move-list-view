@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ICurrentContent, VIEW_TYPE } from '../../../types';
+import { THEME_STRING, THEME } from '../../../constants';
 
 interface IFocusBoxProps { 
-  pageCol?: number;
-  pageRow?: number;
+  widthNum?: number;
+  heightNum?: number;
   current: ICurrentContent;
   focus?: boolean;
   type: VIEW_TYPE;
@@ -11,17 +12,20 @@ interface IFocusBoxProps {
   width?: string | number;
   height?: string | number;
   contentLength?: number;
+  theme?: string;
 }
 const FocusBox = (props: IFocusBoxProps) => {
-  const { pageCol, pageRow, contentLength, current } = props;
+  const { widthNum, heightNum, contentLength, current } = props;
   const startPosition = 100/6;
+  const theme = (props.theme === void 0) ? THEME[THEME_STRING.LIGHT] : THEME[props.theme];
+
   const moveFocusBox = {
     'width': `${props.width}px`,
     'height': `${props.height}px`,
     'transform': props.type === VIEW_TYPE.SLIDE ?
-      `translateX(${current.x >= contentLength! - pageCol! ? (current.x-(contentLength!-pageCol!))*100 + startPosition! : startPosition!}%)` :
-      `translate(${current.x  < pageCol! ? (current.x*100) + startPosition:((pageCol!-1)*100) + startPosition}%, ${current.y< pageRow! ? (current.y*100) + startPosition:((pageRow!-1)*100) + startPosition}%)`,
-    'outline': props.action ? '3px solid #E0EBFF' : (props.focus ? '3px solid #F29661' : '3px solid #C3C3C3')
+      `translateX(${current.x >= contentLength! - widthNum! ? (current.x-(contentLength!-widthNum!))*100 + startPosition! : startPosition!}%)` :
+      `translate(${current.x  < widthNum! ? (current.x*100) + startPosition:((widthNum!-1)*100) + startPosition}%, ${current.y< heightNum! ? (current.y*100) + startPosition:((heightNum!-1)*100) + startPosition}%)`,
+    'outline': props.action ? theme.ACTION : (props.focus ? theme.FOCUS : theme.DEFAULT)
   };
 
   return (
