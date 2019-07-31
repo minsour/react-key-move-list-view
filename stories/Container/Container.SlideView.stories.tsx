@@ -4,6 +4,7 @@ import ViewContainer from '../../src/components/organisms/ViewContainer';
 import ListView from '../../src/components/organisms/ListView';
 import {useFetch} from '../../apis/useFetch';
 import { PROXY_URL, GET_MOVIE_URL } from '../../src/constants';
+import ShowDocs from '../utils/ShowDocs';
 
 interface IContainerSlideViewDemoProps {
   width?:number,
@@ -58,6 +59,9 @@ const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
 }
 
 storiesOf('Container|SlideView', module)
+  .add('docs', () => 
+    <ShowDocs md={require('../docs/ContainerSlideView.md')} />
+  )
   .add('custom component shape', () => {
     return <ContainerSlideViewDemo width = {700} height = {180}/>;
   })

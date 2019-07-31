@@ -4,6 +4,7 @@ import ViewContainer from '../../src/components/organisms/ViewContainer';
 import ListView from '../../src/components/organisms/ListView';
 import { useFetch } from '../../apis/useFetch';
 import { PROXY_URL, GET_MOVIE_URL } from '../../src/constants';
+import ShowDocs from '../utils/ShowDocs';
 
 interface IMatrixViewDemoProps {
   width?:number,
@@ -47,6 +48,9 @@ const MatrixViewDemo = (props:IMatrixViewDemoProps) => {
 }
 
 storiesOf('Container|MatrixView', module)
+  .add('docs', () => 
+    <ShowDocs md={require('../docs/ContainerMatrixView.md')} />
+  )
   .add('custom component shape', () => {
     return <MatrixViewDemo width = {850} height = {350}/>;
   })
