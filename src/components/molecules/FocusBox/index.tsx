@@ -25,7 +25,7 @@ const FocusBox = (props: IFocusBoxProps) => {
     'transform': props.type === VIEW_TYPE.SLIDE ?
       `translateX(${current.x >= contentLength! - widthNum! ? (current.x-(contentLength!-widthNum!))*100 + startPosition! : startPosition!}%)` :
       `translate(${current.x  < widthNum! ? (current.x*100) + startPosition:((widthNum!-1)*100) + startPosition}%, ${current.y< heightNum! ? (current.y*100) + startPosition:((heightNum!-1)*100) + startPosition}%)`,
-    'outline': props.action ? theme.ACTION : (props.focus ? theme.FOCUS : theme.DEFAULT)
+    'outline': `3px solid ${props.action ? theme.ACTION : (props.focus ? theme.FOCUS : theme.DEFAULT)}`
   };
 
   return (

@@ -8,7 +8,7 @@ import {useFetch} from '../apis/fetchUrl';
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const targetUrl = "https://yts.am/api/v2/list_movies.json?sort_by=download_count";
 
-interface IContainerSlideViewDemoProps {
+interface IMatrixViewDemoProps {
   width?:number,
   height?:number,
   widthNum?:number,
@@ -16,7 +16,7 @@ interface IContainerSlideViewDemoProps {
   theme?:"light"|"dark"
 };
 
-const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
+const MatrixViewDemo = (props:IMatrixViewDemoProps) => {
   const list = useFetch(proxyUrl, targetUrl)
   const renderListViews = () => (
     <React.Fragment>
@@ -24,7 +24,7 @@ const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
         index={0}
         title="인기 영화"
         list={list.datas}
-        type="slide"
+        type="matrix"
         width={props.width}
         height={props.height}
         widthNum={props.widthNum}
@@ -35,18 +35,7 @@ const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
         index={1}
         title="인기 드라마"
         list={list.datas}
-        type="slide"
-        width={props.width}
-        height={props.height}
-        widthNum={props.widthNum}
-        totalWidthNum={props.totalWidthNum}
-        theme = {props.theme}
-      />
-      <ListView
-        index={2}
-        title="인기 예능"
-        list={list.datas}
-        type="slide"
+        type="matrix"
         width={props.width}
         height={props.height}
         widthNum={props.widthNum}
@@ -60,13 +49,13 @@ const ContainerSlideViewDemo = (props:IContainerSlideViewDemoProps) => {
   return <ViewContainer render={renderListViews}/>;
 }
 
-storiesOf('Container|SlideView', module)
+storiesOf('Container|MatrixView', module)
   .add('custom component shape', () => {
-    return <ContainerSlideViewDemo width = {700} height = {180}/>;
+    return <MatrixViewDemo width = {850} height = {280}/>;
   })
   .add('number of contents on page', () => {
-    return <ContainerSlideViewDemo width = {700} height = {180} widthNum = {3}/>;
+    return <MatrixViewDemo width = {850} height = {280} widthNum = {5}/>;
   })
   .add('custom theme of focusbox', ()=> {
-    return <ContainerSlideViewDemo width = {700} height = {180} theme ={"dark"}/>;
+    return <MatrixViewDemo width = {850} height = {280} widthNum = {5} theme ={"dark"}/>;
   })

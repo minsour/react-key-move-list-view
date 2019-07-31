@@ -25,13 +25,12 @@ const MatrixView = (props: IMatrixViewProps) => {
     const heightNum = (props.heightNum===void 0) ? DEFAULT_PROPS.HEIGHT_NUM : props.heightNum;    
     const contentWidth = props.width! / (widthNum + 0.4) - 10;
     const contentHeight = props.height! / (heightNum + 0.4) - 10;
-
     const totalWidthNum = (props.totalWidthNum === void 0) ? DEFAULT_PROPS.TOTAL_WIDTH_NUM : props.totalWidthNum;
     const totalHeightNum = Math.floor(props.list.length / totalWidthNum)
+    const matrixView = useListView(VIEW_TYPE.MATRIX, props.index!, totalWidthNum, totalHeightNum);
+
     const startLeftPosition = contentWidth/6+1.5;
     const startTopPosition = contentHeight/6+1.5;
-
-    const matrixView = useListView(VIEW_TYPE.MATRIX, 3, props.index!, totalWidthNum, totalHeightNum);
 
     const renderRow = (index:number) => {
         const rows = props.list.slice(index-totalWidthNum!+1, index+1);
@@ -64,6 +63,7 @@ const MatrixView = (props: IMatrixViewProps) => {
               action = {matrixView.action}
               focus = {matrixView.focus}
               title={props.title}
+              theme={props.theme}
             />}
             <FocusBox
                     width = {`${contentWidth}`}

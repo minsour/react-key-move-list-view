@@ -1,8 +1,8 @@
 const COLOR = {
-  WHITE: "3px solid #D9E5FF",
-  GRAY: "3px solid #C3C3C3",
-  BLUE: "3px solid #021178",
-  ORANGE: "3px solid #F29661",
+  WHITE: "#D9E5FF",
+  GRAY: "#8C8C8C",
+  BLUE: "#021178",
+  ORANGE: "#F29661",
 }
 
 const THEME = {
