@@ -24,7 +24,7 @@
     "DevSoopark",
     "Baek2back"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/react": "^16.8.23",
     "react": "^16.8.6",
