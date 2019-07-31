@@ -9,7 +9,17 @@
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
   },
-  "keywords": ["react", "javascript", "typescript", "keyboard", "move", "list", "view", "slide", "matrix"],
+  "keywords": [
+    "react",
+    "javascript",
+    "typescript",
+    "keyboard",
+    "move",
+    "list",
+    "view",
+    "slide",
+    "matrix"
+  ],
   "contributors": [
     "DevSoopark",
     "Baek2back"
@@ -28,6 +38,7 @@
     "@storybook/addon-storysource": "^5.1.9",
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/jest": "^24.0.15",
     "@types/storybook__addon-backgrounds": "^4.1.2",
     "@types/storybook__react": "^4.0.2",
