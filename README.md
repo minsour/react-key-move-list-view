@@ -1,4 +1,4 @@
-<h1> React Keyboard Move List</h1>
+<h1> React KeyMoveListView</h1>
 Carousel, Matrix Component operated by Keyboard Input (←, ↑, →, ↓)
 
 
