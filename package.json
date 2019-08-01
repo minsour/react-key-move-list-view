@@ -1,6 +1,6 @@
 {
   "name": "react-key-move-list-view",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "React KeyMoveListView(Carousel, Matrix) Library https://DevSoopark.github.io/react-keyboard-move-list/",
   "main": "dist/index.ts",
   "scripts": {
