@@ -25,6 +25,7 @@ const SlideView = (props: ISlideViewProps) => {
   const contentLength = props.list.length;
   const slideView = useListView(VIEW_TYPE.SLIDE, props.index!, contentLength, 0);
   const translateX = slideView.currentContent.x<= contentLength-widthNum && slideView.currentContent.x*(100/contentLength);
+  const action = (props.index===void 0) ? true : slideView.action;
 
   const renderContents = () => (
     props.list.map(content => <Content 
@@ -51,7 +52,7 @@ const SlideView = (props: ISlideViewProps) => {
     >
       {!(props.title === void 0) &&
       <ViewTitle
-        action={slideView.action}
+        action={action}
         focus={slideView.focus}
         title={props.title}
         theme={props.theme}

@@ -27,6 +27,7 @@ const MatrixView = (props: IMatrixViewProps) => {
     const totalWidthNum = (props.totalWidthNum === void 0) ? DEFAULT_PROPS.TOTAL_WIDTH_NUM : props.totalWidthNum;
     const totalHeightNum = Math.floor(props.list.length / totalWidthNum)
     const matrixView = useListView(VIEW_TYPE.MATRIX, props.index!, totalWidthNum, totalHeightNum);
+    const action = (props.index===void 0) ? true : matrixView.action;
 
     const startLeftPosition = contentWidth/6+1.5;
     const startTopPosition = contentHeight/6+1.5;
@@ -59,7 +60,7 @@ const MatrixView = (props: IMatrixViewProps) => {
         >
             {!(props.title === void 0) &&
             <ViewTitle
-              action = {matrixView.action}
+              action = {action}
               focus = {matrixView.focus}
               title={props.title}
               theme={props.theme}
